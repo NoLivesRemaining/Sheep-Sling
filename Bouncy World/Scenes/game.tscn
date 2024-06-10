@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo3ye33dg27kd"]
+
+[ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.173648, -0.696364, 0.696364, 0, 0.707107, 0.707107, -0.984808, -0.122788, 0.122788, 17, 15, 10)
+fov = 45.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.92746, 0)
+
+[node name="Tiles" type="Node" parent="."]
+
+[node name="Tile" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)

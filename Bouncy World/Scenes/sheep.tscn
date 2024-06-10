@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd61do5fi5nl5"]
+
+[ext_resource type="Script" path="res://Scenes/sheepMovement.gd" id="1_gm2r2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vkmqv"]
+
+[node name="Sheep" type="Node3D"]
+script = ExtResource("1_gm2r2")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="CSGSphere3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGSphere3D/RigidBody3D"]
+shape = SubResource("SphereShape3D_vkmqv")

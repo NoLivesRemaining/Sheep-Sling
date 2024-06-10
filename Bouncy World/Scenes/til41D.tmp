@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtu0r5vfh2cgj"]
+
+[ext_resource type="Script" path="res://Scripts/tilecontrol.gd" id="1_cfon2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2ttd"]
+
+[node name="Tile" type="Node3D"]
+script = ExtResource("1_cfon2")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_m2ttd")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
