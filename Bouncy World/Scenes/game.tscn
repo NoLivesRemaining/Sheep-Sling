@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=3 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_8kohq"]
+vertices = PackedVector3Array(-6, 0.7, 1, -6, 0.7, 8, 1, 0.7, 8, 1, 0.7, 1)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_height = 0.1
+agent_max_climb = 0.1
 
 [node name="Game" type="Node3D"]
 
@@ -13,5 +19,197 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.9
 
 [node name="Tiles" type="Node" parent="."]
 
-[node name="Tile" parent="Tiles" instance=ExtResource("1_sn8an")]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Tiles"]
+navigation_mesh = SubResource("NavigationMesh_8kohq")
+
+[node name="Tile" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Tile2" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Tile3" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 8)
+
+[node name="Tile4" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
+
+[node name="Tile5" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Tile6" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Tile7" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6)
+
+[node name="Tile8" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+
+[node name="Tile9" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+
+[node name="Tile10" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 7)
+
+[node name="Tile11" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 8)
+
+[node name="Tile12" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
+
+[node name="Tile13" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="Tile14" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
+
+[node name="Tile15" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6)
+
+[node name="Tile16" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
+
+[node name="Tile17" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Tile18" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Tile19" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+
+[node name="Tile20" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+
+[node name="Tile21" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Tile22" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Tile23" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+
+[node name="Tile24" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="Tile25" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="Tile26" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+
+[node name="Tile27" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+
+[node name="Tile28" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+
+[node name="Tile29" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="Tile30" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="Tile31" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+
+[node name="Tile32" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+
+[node name="Tile33" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+
+[node name="Tile34" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 7)
+
+[node name="Tile35" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+
+[node name="Tile36" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
+
+[node name="Tile37" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6)
+
+[node name="Tile38" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
+
+[node name="Tile39" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+
+[node name="Tile40" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+
+[node name="Tile41" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
+
+[node name="Tile42" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 7)
+
+[node name="Tile43" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 8)
+
+[node name="Tile44" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7)
+
+[node name="Tile45" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+
+[node name="Tile46" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)
+
+[node name="Tile47" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 6)
+
+[node name="Tile48" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
+
+[node name="Tile49" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="Tile50" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3)
+
+[node name="Tile51" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+
+[node name="Tile52" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="Tile53" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
+
+[node name="Tile54" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
+
+[node name="Tile55" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+
+[node name="Tile56" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
+
+[node name="Tile57" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+
+[node name="Tile58" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 3)
+
+[node name="Tile59" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4)
+
+[node name="Tile60" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
+
+[node name="Tile61" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+
+[node name="Tile62" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 1)
+
+[node name="Tile63" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2)
+
+[node name="Tile64" parent="Tiles/NavigationRegion3D" instance=ExtResource("1_sn8an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)

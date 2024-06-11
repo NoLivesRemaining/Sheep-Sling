@@ -1,15 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd61do5fi5nl5"]
+[gd_scene load_steps=5 format=3 uid="uid://bd61do5fi5nl5"]
 
 [ext_resource type="Script" path="res://Scenes/sheepMovement.gd" id="1_gm2r2"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_vkmqv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxaql"]
+albedo_color = Color(0.301961, 1, 1, 1)
 
-[node name="Sheep" type="Node3D"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rkh5m"]
+material = SubResource("StandardMaterial3D_vxaql")
+height = 1.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b81wx"]
+height = 1.1
+
+[node name="Sheep" type="CharacterBody3D" groups=["Sheep"]]
 script = ExtResource("1_gm2r2")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.1
 
-[node name="RigidBody3D" type="RigidBody3D" parent="CSGSphere3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_rkh5m")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGSphere3D/RigidBody3D"]
-shape = SubResource("SphereShape3D_vkmqv")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_b81wx")
