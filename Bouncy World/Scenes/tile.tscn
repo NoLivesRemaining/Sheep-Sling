@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtu0r5vfh2cgj"]
 
-[ext_resource type="Script" path="res://Scripts/tileselect.gd" id="1_cfon2"]
+[ext_resource type="Script" path="res://Scripts/TileSelect.gd" id="1_4am2o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2ttd"]
 
 [node name="Tile" type="Node3D"]
-script = ExtResource("1_cfon2")
+script = ExtResource("1_4am2o")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 
