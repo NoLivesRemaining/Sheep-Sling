@@ -1,14 +1,12 @@
 extends RigidBody3D
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	var speed = linear_velocity * delta
-	var collision_object = move_and_collide(speed)
-	
-	if collision_object:
-		var collider = collision_object.get_collider()
-		var normal = collision_object.get_normal()
-		var reflect = collision_object.get_remainder().bounce(collision_object.get_normal())
-		
-		if collider.is_in_group("Tiles"):
-			print("BOUNCE!")
+#var bounce_velocity
+#
+#func _physics_process(delta):
+	#if(bounce_velocity):
+		#var collision_info = move_and_collide(bounce_velocity * delta)
+		#bounce_velocity = bounce_velocity.bounce(collision_info.get_normal())
+#
+#
+#func bounce(velocity):
+	#bounce_velocity = velocity

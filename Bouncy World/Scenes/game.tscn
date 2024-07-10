@@ -8,7 +8,7 @@
 [node name="Game" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.173648, -0.696364, 0.696364, 0, 0.707107, 0.707107, -0.984808, -0.122788, 0.122788, 3.5884, 6.24163, 5.85842)
+transform = Transform3D(0.173648, -0.696364, 0.696364, 0, 0.707107, 0.707107, -0.984808, -0.122788, 0.122788, 8.1958, 7.73179, 5.85842)
 fov = 65.8
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
