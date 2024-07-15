@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=5 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
 [ext_resource type="PackedScene" uid="uid://bd61do5fi5nl5" path="res://Scenes/sheep.tscn" id="2_qt46k"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3xgpc"]
+bounce = 0.5
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q8y1m"]
 
 [node name="Game" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.173648, -0.696364, 0.696364, 0, 0.707107, 0.707107, -0.984808, -0.122788, 0.122788, 8.1958, 7.73179, 5.85842)
+transform = Transform3D(0.173648, -0.696364, 0.696364, 0, 0.707107, 0.707107, -0.984808, -0.122788, 0.122788, 8.7847, 11.0234, 0.402587)
 fov = 65.8
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -16,205 +19,456 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.9
 
 [node name="Tiles" type="Node" parent="."]
 
-[node name="Tile" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+[node name="Tile" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, 0)
 
-[node name="Tile2" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+[node name="Tile2" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, 0)
 
-[node name="Tile3" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 8)
+[node name="Tile3" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, 0)
 
-[node name="Tile4" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
+[node name="Tile4" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, 0)
 
-[node name="Tile5" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+[node name="Tile5" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, 2)
 
-[node name="Tile6" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+[node name="Tile6" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, 2)
 
-[node name="Tile7" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6)
+[node name="Tile7" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, 2)
 
-[node name="Tile8" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+[node name="Tile8" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, 2)
 
-[node name="Tile9" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+[node name="Tile9" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, 4)
 
-[node name="Tile10" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 7)
+[node name="Tile10" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, 4)
 
-[node name="Tile11" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 8)
+[node name="Tile11" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, 4)
 
-[node name="Tile12" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
+[node name="Tile12" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, 4)
 
-[node name="Tile13" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+[node name="Tile13" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, 6)
 
-[node name="Tile14" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
+[node name="Tile14" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, 6)
 
-[node name="Tile15" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6)
+[node name="Tile15" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, 6)
 
-[node name="Tile16" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
+[node name="Tile16" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, 6)
 
-[node name="Tile17" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+[node name="Tile25" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, -8)
 
-[node name="Tile18" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+[node name="Tile26" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, -8)
 
-[node name="Tile19" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+[node name="Tile27" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, -8)
 
-[node name="Tile20" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+[node name="Tile28" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, -8)
 
-[node name="Tile21" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+[node name="Tile29" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, -6)
 
-[node name="Tile22" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+[node name="Tile30" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, -6)
 
-[node name="Tile23" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+[node name="Tile31" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, -6)
 
-[node name="Tile24" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+[node name="Tile32" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, -6)
 
-[node name="Tile25" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+[node name="Tile33" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, -4)
 
-[node name="Tile26" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+[node name="Tile34" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, -4)
 
-[node name="Tile27" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+[node name="Tile35" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, -4)
 
-[node name="Tile28" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+[node name="Tile36" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, -4)
 
-[node name="Tile29" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+[node name="Tile37" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, -2)
 
-[node name="Tile30" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+[node name="Tile38" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, -2)
 
-[node name="Tile31" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+[node name="Tile39" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, -2)
 
-[node name="Tile32" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+[node name="Tile40" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, -2)
 
-[node name="Tile33" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+[node name="Tile41" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, -10)
 
-[node name="Tile34" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 7)
+[node name="Tile42" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, -10)
 
-[node name="Tile35" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+[node name="Tile43" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, -10)
 
-[node name="Tile36" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
+[node name="Tile44" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, -10)
 
-[node name="Tile37" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6)
+[node name="Tile17" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, 8)
 
-[node name="Tile38" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
+[node name="Tile18" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, 8)
 
-[node name="Tile39" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+[node name="Tile19" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, 8)
 
-[node name="Tile40" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+[node name="Tile20" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, 8)
 
-[node name="Tile41" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
+[node name="Tile21" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, -0.5, 10)
 
-[node name="Tile42" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 7)
+[node name="Tile91" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, -0.5, 10)
 
-[node name="Tile43" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 8)
+[node name="Tile22" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.5, 10)
 
-[node name="Tile44" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7)
+[node name="Tile23" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, -0.5, 10)
 
-[node name="Tile45" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+[node name="Tile24" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -0.5, 10)
 
-[node name="Tile46" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)
+[node name="Tile45" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, 0)
 
-[node name="Tile47" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 6)
+[node name="Tile46" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, 0)
 
-[node name="Tile48" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
+[node name="Tile47" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, 0)
 
-[node name="Tile49" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+[node name="Tile48" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, 0)
 
-[node name="Tile50" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3)
+[node name="Tile49" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, 2)
 
-[node name="Tile51" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+[node name="Tile50" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, 2)
 
-[node name="Tile52" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+[node name="Tile51" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, 2)
 
-[node name="Tile53" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
+[node name="Tile52" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, 2)
 
-[node name="Tile54" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
+[node name="Tile53" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, 4)
 
-[node name="Tile55" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+[node name="Tile54" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, 4)
 
-[node name="Tile56" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
+[node name="Tile55" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, 4)
 
-[node name="Tile57" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+[node name="Tile56" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, 4)
 
-[node name="Tile58" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 3)
+[node name="Tile57" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, 6)
 
-[node name="Tile59" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4)
+[node name="Tile58" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, 6)
 
-[node name="Tile60" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
+[node name="Tile59" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, 6)
 
-[node name="Tile61" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+[node name="Tile60" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, 6)
 
-[node name="Tile62" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 1)
+[node name="Tile61" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, -8)
 
-[node name="Tile63" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2)
+[node name="Tile62" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, -8)
 
-[node name="Tile64" parent="Tiles" groups=["Tiles"] instance=ExtResource("1_sn8an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
+[node name="Tile63" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, -8)
+
+[node name="Tile64" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, -8)
+
+[node name="Tile65" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, -6)
+
+[node name="Tile66" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, -6)
+
+[node name="Tile67" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, -6)
+
+[node name="Tile68" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, -6)
+
+[node name="Tile69" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, -4)
+
+[node name="Tile70" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, -4)
+
+[node name="Tile71" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, -4)
+
+[node name="Tile72" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, -4)
+
+[node name="Tile73" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, -2)
+
+[node name="Tile74" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, -2)
+
+[node name="Tile75" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, -2)
+
+[node name="Tile76" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, -2)
+
+[node name="Tile77" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, -10)
+
+[node name="Tile78" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, -10)
+
+[node name="Tile79" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, -10)
+
+[node name="Tile80" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, -10)
+
+[node name="Tile81" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, 8)
+
+[node name="Tile82" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, 8)
+
+[node name="Tile83" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, 8)
+
+[node name="Tile84" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, 8)
+
+[node name="Tile85" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -0.5, 10)
+
+[node name="Tile86" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, 10)
+
+[node name="Tile87" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.5, 10)
+
+[node name="Tile88" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -0.5, 10)
+
+[node name="Tile89" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, -0.5, 10)
+
+[node name="Tile90" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 10)
+
+[node name="Tile92" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, -0.5, 8)
+
+[node name="Tile93" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, -0.5, 8)
+
+[node name="Tile94" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 8)
+
+[node name="Tile95" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, -0.5, 6)
+
+[node name="Tile96" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, -0.5, 6)
+
+[node name="Tile97" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 6)
+
+[node name="Tile98" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, -0.5, 4)
+
+[node name="Tile99" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, -0.5, 4)
+
+[node name="Tile100" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 4)
+
+[node name="Tile101" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, -0.5, -10)
+
+[node name="Tile102" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, -0.5, -10)
+
+[node name="Tile103" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, -10)
+
+[node name="Tile104" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, -0.5, -8)
+
+[node name="Tile105" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, -0.5, -8)
+
+[node name="Tile106" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, -8)
+
+[node name="Tile107" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, -0.5, -6)
+
+[node name="Tile108" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, -0.5, -6)
+
+[node name="Tile109" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, -6)
+
+[node name="Tile110" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, -0.5, -4)
+
+[node name="Tile111" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, -0.5, -4)
+
+[node name="Tile112" parent="Tiles" instance=ExtResource("1_sn8an")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, -4)
 
 [node name="Sheep" parent="." instance=ExtResource("2_qt46k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45, 3.154, 3.64579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.70444, -6.46215)
+physics_material_override = SubResource("PhysicsMaterial_3xgpc")
 gravity_scale = 0.9
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Boundaries" type="Node" parent="."]
+
+[node name="Floor Boundary" type="StaticBody3D" parent="Boundaries"]
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Floor Boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Floor Boundary2" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 60, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Floor Boundary2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 1" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 10, -10)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 2" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 10)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 3" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 10, 10, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 4" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -10, 10, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 5" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 30, -10)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 6" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 10)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 7" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 10, 30, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 8" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -10, 30, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 9" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 50, -10)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 10" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 10)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 11" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 10, 50, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall Boundary 12" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -10, 50, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")

@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtu0r5vfh2cgj"]
 
-[ext_resource type="Script" path="res://Scripts/TileSelect.gd" id="1_4am2o"]
+[ext_resource type="Script" path="res://Scripts/TileControl.gd" id="1_4w16f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2ttd"]
 size = Vector3(1, 0.997589, 1)
 
 [node name="Tile" type="Node3D"]
-script = ExtResource("1_4am2o")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_4w16f")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 

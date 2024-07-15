@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ditao2fywc1c0"]
+
+[ext_resource type="Script" path="res://Scripts/winbox.gd" id="1_lnbra"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_um7wy"]
+
+[node name="Winbox" type="StaticBody3D"]
+script = ExtResource("1_lnbra")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1, 0, 0, 0, 1.8, 0, 0, 0)
+shape = SubResource("BoxShape3D_um7wy")

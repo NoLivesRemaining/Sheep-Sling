@@ -9,7 +9,8 @@ var elasticLocation
 var acceleration = 30
 var elasticAcceleration
 var speed
-const roundingThreshold = 0.05
+const roundingThreshold = 0.1
+
 
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
