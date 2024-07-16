@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Scripts/TileControl.gd" id="1_4w16f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2ttd"]
-size = Vector3(1, 0.997589, 1)
+size = Vector3(2, 2, 2)
 
 [node name="Tile" type="Node3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_4w16f")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(2, 2, 2)
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 2
