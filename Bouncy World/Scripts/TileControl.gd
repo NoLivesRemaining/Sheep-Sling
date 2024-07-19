@@ -12,7 +12,7 @@ var speed
 const roundingThreshold = 0.1
 
 
-func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
+func _on_area_3d_input_event(camera, event, positions, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			self.isPickedUp = true
