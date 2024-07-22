@@ -1,9 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=11 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_2txsa"]
 [ext_resource type="PackedScene" uid="uid://ditao2fywc1c0" path="res://Scenes/winbox.tscn" id="4_nc5d2"]
 [ext_resource type="PackedScene" uid="uid://crjlq0i2c8mc5" path="res://Scenes/spawnpoint.tscn" id="4_qeli3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_txbkg"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q8y1m"]
 
@@ -51,11 +56,12 @@ _data = {
 [node name="Game" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.173648, -0.696364, 0.696364, 0, 0.707107, 0.707107, -0.984808, -0.122788, 0.122788, 26.4593, 42.116, -2.75981)
+transform = Transform3D(-4.37114e-08, -0.422618, 0.906308, 0, 0.906308, 0.422618, -1, 1.84732e-08, -3.9616e-08, 20, 15, 0)
 fov = 65.8
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.92746, 0)
+transform = Transform3D(0.803466, 0.137615, -0.579228, 0.579228, -0.40558, 0.707107, -0.137615, -0.903641, -0.40558, 0, 20, 0)
+shadow_enabled = true
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -63,6 +69,35 @@ script = ExtResource("3_2txsa")
 
 [node name="Spawnpoint" parent="GameManager" instance=ExtResource("4_qeli3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
+
+[node name="UI" type="CanvasLayer" parent="GameManager"]
+visible = false
+follow_viewport_enabled = true
+
+[node name="Label" type="Label" parent="GameManager/UI"]
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.0
+offset_top = -106.5
+offset_right = 397.0
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "You've rounded up all the sheep!
+
+Great job!"
+label_settings = SubResource("LabelSettings_txbkg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="GameManager"]
+wait_time = 5.0
+one_shot = true
 
 [node name="TileGroup" type="Node" parent="."]
 
@@ -535,3 +570,5 @@ libraries = {
 "": SubResource("AnimationLibrary_vsou0")
 }
 autoplay = "Rotation"
+
+[connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
