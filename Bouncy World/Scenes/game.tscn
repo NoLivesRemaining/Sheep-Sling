@@ -14,9 +14,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_npdvm"]
 friction = 0.1
-
-[sub_resource type="PrismMesh" id="PrismMesh_vbbhr"]
-size = Vector3(6, 2, 4)
+bounce = 0.8
 
 [sub_resource type="Animation" id="Animation_pqgy6"]
 length = 0.001
@@ -35,7 +33,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dav4g"]
 resource_name = "Rotation"
-length = 4.0
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -55,6 +53,9 @@ _data = {
 "RESET": SubResource("Animation_pqgy6"),
 "Rotation": SubResource("Animation_dav4g")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kw6y6"]
+size = Vector3(2, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmbmt"]
 albedo_color = Color(0.105088, 0.317263, 0, 1)
@@ -556,23 +557,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
 [node name="Spinning Block" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
 collision_mask = 3
 input_ray_pickable = false
 physics_material_override = SubResource("PhysicsMaterial_npdvm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Spinning Block"]
-mesh = SubResource("PrismMesh_vbbhr")
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Spinning Block"]
-depth = 4.0
-polygon = PackedVector2Array(0, 1, -3, -1, 3, -1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spinning Block"]
 libraries = {
 "": SubResource("AnimationLibrary_vsou0")
 }
 autoplay = "Rotation"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spinning Block"]
+transform = Transform3D(0.853553, -0.146447, 0.5, 0.5, 0.5, -0.707107, -0.146447, 0.853553, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_kw6y6")
 
 [node name="Winbox" parent="." instance=ExtResource("4_nc5d2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -20,6 +20,7 @@ script = ExtResource("1_lnbra")
 
 [node name="WinArea" type="Area3D" parent="."]
 collision_mask = 2
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WinArea"]
 shape = SubResource("BoxShape3D_um7wy")
@@ -218,6 +219,7 @@ material = SubResource("StandardMaterial3D_b8mrv")
 [node name="Colliders" type="Node3D" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders"]
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
