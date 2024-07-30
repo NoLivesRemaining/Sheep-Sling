@@ -1,18 +1,238 @@
-[gd_scene load_steps=3 format=3 uid="uid://ditao2fywc1c0"]
+[gd_scene load_steps=6 format=3 uid="uid://ditao2fywc1c0"]
 
 [ext_resource type="Script" path="res://Scripts/winbox.gd" id="1_lnbra"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_um7wy"]
-size = Vector3(5.9, 1, 5.9)
+size = Vector3(5.8, 1, 5.8)
 
-[node name="Winbox" type="Area3D"]
-collision_mask = 2
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e15jx"]
+albedo_color = Color(0.12549, 0.364706, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8mrv"]
+albedo_color = Color(0.587027, 0.418059, 0.268655, 0.996078)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vttha"]
+size = Vector3(0.1, 1, 6)
+
+[node name="Winbox" type="Node3D"]
+top_level = true
 script = ExtResource("1_lnbra")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="WinArea" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WinArea"]
 shape = SubResource("BoxShape3D_um7wy")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-size = Vector3(5.9, 1, 5.9)
+[node name="CSGBox3D" type="CSGBox3D" parent="WinArea/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(6, 1, 6)
+material = SubResource("StandardMaterial3D_e15jx")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Fencing" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.2, 3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.2, 3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.2, -3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.2, -3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_b8mrv")
+
+[node name="Colliders" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Colliders"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+shape = SubResource("BoxShape3D_vttha")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+shape = SubResource("BoxShape3D_vttha")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -3)
+shape = SubResource("BoxShape3D_vttha")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 3)
+shape = SubResource("BoxShape3D_vttha")
+
+[connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]

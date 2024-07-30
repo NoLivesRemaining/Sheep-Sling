@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=13 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_2txsa"]
@@ -56,11 +56,14 @@ _data = {
 "Rotation": SubResource("Animation_dav4g")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmbmt"]
+albedo_color = Color(0.105088, 0.317263, 0, 1)
+
 [node name="Game" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -0.422618, 0.906308, 0, 0.906308, 0.422618, -1, 1.84732e-08, -3.9616e-08, 20, 15, 0)
-fov = 65.8
+transform = Transform3D(-4.37114e-08, -0.173648, 0.984808, 0, 0.984808, 0.173648, -1, 7.5904e-09, -4.30473e-08, 20, 6, 0)
+fov = 55.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.803466, 0.137615, -0.579228, 0.579228, -0.40558, 0.707107, -0.137615, -0.903641, -0.40558, 0, 20, 0)
@@ -552,9 +555,6 @@ input_ray_pickable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="Winbox" parent="." instance=ExtResource("4_nc5d2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
 [node name="Spinning Block" type="AnimatableBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 25, 0)
 collision_mask = 3
@@ -573,5 +573,30 @@ libraries = {
 "": SubResource("AnimationLibrary_vsou0")
 }
 autoplay = "Rotation"
+
+[node name="Winbox" parent="." instance=ExtResource("4_nc5d2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Floor Colours" type="Node3D" parent="."]
+
+[node name="Floor Texture" type="CSGBox3D" parent="Floor Colours"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.98, -0.0655275, 0.0280256)
+size = Vector3(300, 1, 425)
+material = SubResource("StandardMaterial3D_pmbmt")
+
+[node name="Floor Texture4" type="CSGBox3D" parent="Floor Colours"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0204, -0.0655275, 0.0280256)
+size = Vector3(2, 1, 22)
+material = SubResource("StandardMaterial3D_pmbmt")
+
+[node name="Floor Texture2" type="CSGBox3D" parent="Floor Colours"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0204, -0.0655275, 111.028)
+size = Vector3(100, 1, 200)
+material = SubResource("StandardMaterial3D_pmbmt")
+
+[node name="Floor Texture3" type="CSGBox3D" parent="Floor Colours"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0204, -0.0655275, -110.972)
+size = Vector3(100, 1, 200)
+material = SubResource("StandardMaterial3D_pmbmt")
 
 [connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]

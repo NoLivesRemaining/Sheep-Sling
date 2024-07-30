@@ -1,7 +1,8 @@
-extends Area3D
+extends Node3D
 
 @onready var game_manager = %GameManager
 
-func _on_body_entered(body):
+
+func _on_win_area_body_entered(body):
 	game_manager.add_point()
 	body.queue_free()

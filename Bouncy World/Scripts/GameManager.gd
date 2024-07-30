@@ -9,7 +9,7 @@ var sheepScore = 0
 @onready var timer = $Timer
 
 func _ready():
-	sheepCount = sheepRandomiser.randi_range(3, 6)
+	sheepCount = sheepRandomiser.randi_range(6, 10)
 	$UI.set_visible(false)
 
 func add_point():
