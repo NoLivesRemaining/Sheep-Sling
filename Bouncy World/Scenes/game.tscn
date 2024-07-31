@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=17 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_2txsa"]
@@ -56,6 +56,22 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kw6y6"]
 size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxaql"]
+albedo_color = Color(0, 0.0709874, 0.0711856, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3u7hr"]
+material = SubResource("StandardMaterial3D_vxaql")
+radius = 0.2
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p2fij"]
+material = SubResource("StandardMaterial3D_vxaql")
+radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdue1"]
+albedo_color = Color(0.960351, 0.960351, 0.960351, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmbmt"]
 albedo_color = Color(0.105088, 0.317263, 0, 1)
@@ -572,8 +588,641 @@ autoplay = "Rotation"
 transform = Transform3D(0.853553, -0.146447, 0.5, 0.5, 0.5, -0.707107, -0.146447, 0.853553, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_kw6y6")
 
-[node name="Winbox" parent="." instance=ExtResource("4_nc5d2")]
+[node name="Winbox" parent="." node_paths=PackedStringArray("sheepSpawnArray") instance=ExtResource("4_nc5d2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+sheepSpawnArray = [NodePath("Sheep Display/SheepShape"), NodePath("Sheep Display/SheepShape2"), NodePath("Sheep Display/SheepShape3"), NodePath("Sheep Display/SheepShape4"), NodePath("Sheep Display/SheepShape5"), NodePath("Sheep Display/SheepShape6"), NodePath("Sheep Display/SheepShape7"), NodePath("Sheep Display/SheepShape8"), NodePath("Sheep Display/SheepShape9"), NodePath("Sheep Display/SheepShape10")]
+
+[node name="Sheep Display" type="Node3D" parent="Winbox"]
+
+[node name="SheepShape" type="Node3D" parent="Winbox/Sheep Display"]
+transform = Transform3D(-0.687113, 0, -0.726551, 0, 1, 0, 0.726551, 0, -0.687113, -1.689, -0.2, 2.006)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_3u7hr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="SheepShape2" type="Node3D" parent="Winbox/Sheep Display"]
+transform = Transform3D(0.317503, 0, 0.948257, 0, 1, 0, -0.948257, 0, 0.317503, 0.609359, -0.2, 1.81253)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_3u7hr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="SheepShape3" type="Node3D" parent="Winbox/Sheep Display"]
+transform = Transform3D(0.439406, 0, -0.898288, 0, 1, 0, 0.898288, 0, 0.439406, 0.522785, -0.2, -1.87732)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_3u7hr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="SheepShape4" type="Node3D" parent="Winbox/Sheep Display"]
+transform = Transform3D(0.871359, 0, 0.490645, 0, 1, 0, -0.490645, 0, 0.871359, -2.06134, -0.2, -0.175209)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_3u7hr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="SheepShape5" type="Node3D" parent="Winbox/Sheep Display"]
+transform = Transform3D(-0.365787, 0, 0.930699, 0, 1, 0, -0.930699, 0, -0.365787, -1.689, -0.2, -1.88837)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_3u7hr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="SheepShape6" type="Node3D" parent="Winbox/Sheep Display"]
+transform = Transform3D(0.209124, 0, -0.977889, 0, 1, 0, 0.977889, 0, 0.209124, 2.05987, -0.2, -1.17784)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_3u7hr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="SheepShape7" type="Node3D" parent="Winbox/Sheep Display"]
+transform = Transform3D(-0.533364, 0, -0.845886, 0, 1, 0, 0.845886, 0, -0.533364, -0.843704, -0.2, -0.238506)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_3u7hr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="SheepShape8" type="Node3D" parent="Winbox/Sheep Display"]
+transform = Transform3D(0.781215, 0, 0.624261, 0, 1, 0, -0.624261, 0, 0.781215, 1.99628, -0.2, 1.82312)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_3u7hr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="SheepShape9" type="Node3D" parent="Winbox/Sheep Display"]
+transform = Transform3D(0.733505, 0, -0.679685, 0, 1, 0, 0.679685, 0, 0.733505, 0.720592, -0.2, -0.394792)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_3u7hr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="SheepShape10" type="Node3D" parent="Winbox/Sheep Display"]
+transform = Transform3D(0.915361, 0, 0.402635, 0, 1, 0, -0.402635, 0, 0.915361, 0.0109593, -0.2, 0.822009)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_3u7hr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_p2fij")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_xdue1")
 
 [node name="Floor Colours" type="Node3D" parent="."]
 
