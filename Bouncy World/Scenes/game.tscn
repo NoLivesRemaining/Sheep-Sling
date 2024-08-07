@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=47 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_2txsa"]
@@ -72,6 +72,387 @@ height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdue1"]
 albedo_color = Color(0.960351, 0.960351, 0.960351, 1)
+
+[sub_resource type="Animation" id="Animation_urh5q"]
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.689, -0.2, 2.006), Vector3(-1.689, 0.00672507, 2.006)]
+}
+
+[sub_resource type="Animation" id="Animation_rao82"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.689, -0.2, 2.006), Vector3(-1.689, -0.0551752, 2.006)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8g6d5"]
+_data = {
+"RESET": SubResource("Animation_urh5q"),
+"sheep_bounce": SubResource("Animation_rao82")
+}
+
+[sub_resource type="Animation" id="Animation_yjpa7"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.609359, -0.2, 1.81253), Vector3(0.609, 0.007, 1.813)]
+}
+
+[sub_resource type="Animation" id="Animation_shs88"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.609359, -0.2, 1.81253)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t30jr"]
+_data = {
+"RESET": SubResource("Animation_shs88"),
+"sheep_bounce": SubResource("Animation_yjpa7")
+}
+
+[sub_resource type="Animation" id="Animation_jo8an"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.522785, -0.2, -1.87732), Vector3(0.523, 0.007, -1.877)]
+}
+
+[sub_resource type="Animation" id="Animation_qqpvh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.522785, -0.2, -1.87732)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vk0g7"]
+_data = {
+"RESET": SubResource("Animation_qqpvh"),
+"sheep_bounce": SubResource("Animation_jo8an")
+}
+
+[sub_resource type="Animation" id="Animation_saorf"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.06134, -0.2, -0.175209), Vector3(-2.061, 0.007, -0.175)]
+}
+
+[sub_resource type="Animation" id="Animation_yi42h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.06134, -0.2, -0.175209)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fr2f"]
+_data = {
+"RESET": SubResource("Animation_yi42h"),
+"sheep_bounce": SubResource("Animation_saorf")
+}
+
+[sub_resource type="Animation" id="Animation_66f40"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.689, -0.2, -1.88837), Vector3(-1.689, 0.007, -1.888)]
+}
+
+[sub_resource type="Animation" id="Animation_soq0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.689, -0.2, -1.88837)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o755c"]
+_data = {
+"RESET": SubResource("Animation_soq0q"),
+"sheep_bounce": SubResource("Animation_66f40")
+}
+
+[sub_resource type="Animation" id="Animation_wbdmj"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.05987, -0.2, -1.17784), Vector3(2.06, 0.007, -1.178)]
+}
+
+[sub_resource type="Animation" id="Animation_pvvaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.05987, -0.2, -1.17784)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vl0k0"]
+_data = {
+"RESET": SubResource("Animation_pvvaa"),
+"sheep_bounce": SubResource("Animation_wbdmj")
+}
+
+[sub_resource type="Animation" id="Animation_sowfb"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.843704, -0.2, -0.238506), Vector3(-0.844, 0.007, -0.239)]
+}
+
+[sub_resource type="Animation" id="Animation_fqf2a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.843704, -0.2, -0.238506)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rn0b6"]
+_data = {
+"RESET": SubResource("Animation_fqf2a"),
+"sheep_bounce": SubResource("Animation_sowfb")
+}
+
+[sub_resource type="Animation" id="Animation_0nj2q"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.99628, -0.2, 1.82312), Vector3(1.996, 0.007, 1.823)]
+}
+
+[sub_resource type="Animation" id="Animation_vghl6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.99628, -0.2, 1.82312)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnn51"]
+_data = {
+"RESET": SubResource("Animation_vghl6"),
+"sheep_bounce": SubResource("Animation_0nj2q")
+}
+
+[sub_resource type="Animation" id="Animation_1pyen"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.720592, -0.2, -0.394792), Vector3(0.721, 0.007, -0.395)]
+}
+
+[sub_resource type="Animation" id="Animation_tb2fi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.720592, -0.2, -0.394792)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5i82"]
+_data = {
+"RESET": SubResource("Animation_tb2fi"),
+"sheep_bounce": SubResource("Animation_1pyen")
+}
+
+[sub_resource type="Animation" id="Animation_wyomm"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.0109593, -0.2, 0.822009), Vector3(0.011, 0.007, 0.822)]
+}
+
+[sub_resource type="Animation" id="Animation_wpy3e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0109593, -0.2, 0.822009)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x7iak"]
+_data = {
+"RESET": SubResource("Animation_wpy3e"),
+"sheep_bounce": SubResource("Animation_wyomm")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmbmt"]
 albedo_color = Color(0.105088, 0.317263, 0, 1)
@@ -657,6 +1038,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape"]
+libraries = {
+"": SubResource("AnimationLibrary_8g6d5")
+}
+
 [node name="SheepShape2" type="Node3D" parent="Winbox/Sheep Display"]
 transform = Transform3D(0.317503, 0, 0.948257, 0, 1, 0, -0.948257, 0, 0.317503, 0.609359, -0.2, 1.81253)
 
@@ -719,6 +1105,11 @@ material = SubResource("StandardMaterial3D_xdue1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape2"]
+libraries = {
+"": SubResource("AnimationLibrary_t30jr")
+}
 
 [node name="SheepShape3" type="Node3D" parent="Winbox/Sheep Display"]
 transform = Transform3D(0.439406, 0, -0.898288, 0, 1, 0, 0.898288, 0, 0.439406, 0.522785, -0.2, -1.87732)
@@ -783,6 +1174,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape3"]
+libraries = {
+"": SubResource("AnimationLibrary_vk0g7")
+}
+
 [node name="SheepShape4" type="Node3D" parent="Winbox/Sheep Display"]
 transform = Transform3D(0.871359, 0, 0.490645, 0, 1, 0, -0.490645, 0, 0.871359, -2.06134, -0.2, -0.175209)
 
@@ -845,6 +1241,11 @@ material = SubResource("StandardMaterial3D_xdue1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape4"]
+libraries = {
+"": SubResource("AnimationLibrary_2fr2f")
+}
 
 [node name="SheepShape5" type="Node3D" parent="Winbox/Sheep Display"]
 transform = Transform3D(-0.365787, 0, 0.930699, 0, 1, 0, -0.930699, 0, -0.365787, -1.689, -0.2, -1.88837)
@@ -909,6 +1310,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape5"]
+libraries = {
+"": SubResource("AnimationLibrary_o755c")
+}
+
 [node name="SheepShape6" type="Node3D" parent="Winbox/Sheep Display"]
 transform = Transform3D(0.209124, 0, -0.977889, 0, 1, 0, 0.977889, 0, 0.209124, 2.05987, -0.2, -1.17784)
 
@@ -971,6 +1377,11 @@ material = SubResource("StandardMaterial3D_xdue1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape6"]
+libraries = {
+"": SubResource("AnimationLibrary_vl0k0")
+}
 
 [node name="SheepShape7" type="Node3D" parent="Winbox/Sheep Display"]
 transform = Transform3D(-0.533364, 0, -0.845886, 0, 1, 0, 0.845886, 0, -0.533364, -0.843704, -0.2, -0.238506)
@@ -1035,6 +1446,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape7"]
+libraries = {
+"": SubResource("AnimationLibrary_rn0b6")
+}
+
 [node name="SheepShape8" type="Node3D" parent="Winbox/Sheep Display"]
 transform = Transform3D(0.781215, 0, 0.624261, 0, 1, 0, -0.624261, 0, 0.781215, 1.99628, -0.2, 1.82312)
 
@@ -1097,6 +1513,11 @@ material = SubResource("StandardMaterial3D_xdue1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape8"]
+libraries = {
+"": SubResource("AnimationLibrary_pnn51")
+}
 
 [node name="SheepShape9" type="Node3D" parent="Winbox/Sheep Display"]
 transform = Transform3D(0.733505, 0, -0.679685, 0, 1, 0, 0.679685, 0, 0.733505, 0.720592, -0.2, -0.394792)
@@ -1161,6 +1582,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape9"]
+libraries = {
+"": SubResource("AnimationLibrary_g5i82")
+}
+
 [node name="SheepShape10" type="Node3D" parent="Winbox/Sheep Display"]
 transform = Transform3D(0.915361, 0, 0.402635, 0, 1, 0, -0.402635, 0, 0.915361, 0.0109593, -0.2, 0.822009)
 
@@ -1223,6 +1649,11 @@ material = SubResource("StandardMaterial3D_xdue1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape10"]
+libraries = {
+"": SubResource("AnimationLibrary_x7iak")
+}
 
 [node name="Floor Colours" type="Node3D" parent="."]
 
