@@ -1,8 +1,46 @@
-[gd_scene load_steps=39 format=3 uid="uid://dryumo3hkvp00"]
+[gd_scene load_steps=42 format=3 uid="uid://dryumo3hkvp00"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_neqjg"]
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="2_ltbx5"]
 [ext_resource type="PackedScene" uid="uid://ditao2fywc1c0" path="res://Scenes/winbox.tscn" id="3_e32cj"]
+
+[sub_resource type="Animation" id="Animation_nnm73"]
+resource_name = "camera_pan"
+length = 20.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(7, 2, 2.3), Vector3(7, 2, -2.5)]
+}
+
+[sub_resource type="Animation" id="Animation_ixjga"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(7.13713, 1.9248, 2.35544)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5yk8"]
+_data = {
+"RESET": SubResource("Animation_ixjga"),
+"camera_pan": SubResource("Animation_nnm73")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxaql"]
 albedo_color = Color(0, 0.0709874, 0.0711856, 1)
@@ -21,7 +59,7 @@ height = 0.5
 albedo_color = Color(0.960351, 0.960351, 0.960351, 1)
 
 [sub_resource type="Animation" id="Animation_urh5q"]
-length = 1.5
+length = 2.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -38,7 +76,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_rao82"]
 resource_name = "sheep_bounce"
-length = 1.5
+length = 2.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -47,7 +85,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-1.689, -0.2, 2.006), Vector3(-1.689, -0.0551752, 2.006)]
@@ -76,7 +114,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_yjpa7"]
 resource_name = "sheep_bounce"
-length = 1.5
+length = 1.9
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -85,7 +123,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.609359, -0.2, 1.81253), Vector3(0.609, 0.007, 1.813)]
@@ -114,7 +152,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_jo8an"]
 resource_name = "sheep_bounce"
-length = 1.5
+length = 1.8
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -123,7 +161,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.522785, -0.2, -1.87732), Vector3(0.523, 0.007, -1.877)]
@@ -152,7 +190,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_saorf"]
 resource_name = "sheep_bounce"
-length = 1.5
+length = 1.7
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -161,7 +199,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-2.06134, -0.2, -0.175209), Vector3(-2.061, 0.007, -0.175)]
@@ -190,7 +228,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_66f40"]
 resource_name = "sheep_bounce"
-length = 1.5
+length = 1.6
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -199,7 +237,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-1.689, -0.2, -1.88837), Vector3(-1.689, 0.007, -1.888)]
@@ -266,7 +304,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_sowfb"]
 resource_name = "sheep_bounce"
-length = 1.5
+length = 1.4
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -275,7 +313,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.843704, -0.2, -0.238506), Vector3(-0.844, 0.007, -0.239)]
@@ -304,7 +342,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0nj2q"]
 resource_name = "sheep_bounce"
-length = 1.5
+length = 1.3
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -313,7 +351,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(1.99628, -0.2, 1.82312), Vector3(1.996, 0.007, 1.823)]
@@ -342,7 +380,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_1pyen"]
 resource_name = "sheep_bounce"
-length = 1.5
+length = 1.2
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -351,7 +389,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.720592, -0.2, -0.394792), Vector3(0.721, 0.007, -0.395)]
@@ -380,7 +418,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wyomm"]
 resource_name = "sheep_bounce"
-length = 1.5
+length = 1.1
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -389,7 +427,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.0109593, -0.2, 0.822009), Vector3(0.011, 0.007, 0.822)]
@@ -408,8 +446,14 @@ albedo_color = Color(0.105088, 0.317263, 0, 1)
 script = ExtResource("1_neqjg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.36147e-08, -0.23872, 0.971089, -2.9053e-09, 0.971089, 0.23872, -1, 7.59039e-09, -4.30473e-08, 7.13713, 1.9248, 2.35544)
+transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 7.13713, 1.9248, 2.35544)
 fov = 55.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_b5yk8")
+}
+autoplay = "camera_pan"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.803466, 0.137615, -0.579228, 0.579228, -0.40558, 0.707107, -0.137615, -0.903641, -0.40558, 0, 20, 0)
