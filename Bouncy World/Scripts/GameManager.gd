@@ -10,10 +10,12 @@ var sheepScore = 0
 
 func _ready():
 	sheepCount = sheepRandomiser.randi_range(6, 10)
-	$UI.set_visible(false)
+	$UI/Wintext.set_visible(false)
+	$UI/SheepCountText.text = str(sheepScore) + "/" + str(sheepCount)
 
 func add_point():
 	sheepScore += 1
+	$UI/SheepCountText.text = str(sheepScore) + "/" + str(sheepCount)
 	check_Score()
 
 func spawn():
@@ -23,7 +25,8 @@ func spawn():
 
 func check_Score():
 	if(sheepScore == sheepCount):
-		$UI.set_visible(true)
+		$UI/Wintext.set_visible(true)
+		$UI/SheepCountText.set_visible(false)
 		timer.start()
 
 func _on_timer_timeout():

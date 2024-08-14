@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=54 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_2txsa"]
@@ -9,6 +9,22 @@
 font_size = 50
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxaql"]
+albedo_color = Color(0, 0.0709874, 0.0711856, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f82fr"]
+material = SubResource("StandardMaterial3D_vxaql")
+radius = 0.2
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l70wk"]
+material = SubResource("StandardMaterial3D_vxaql")
+radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wifm6"]
+albedo_color = Color(0.960351, 0.960351, 0.960351, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q8y1m"]
 
@@ -416,7 +432,7 @@ _data = {
 "sheep_bounce": SubResource("Animation_1pyen")
 }
 
-[sub_resource type="Animation" id="Animation_wpy3e"]
+[sub_resource type="Animation" id="Animation_6agnf"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -431,7 +447,7 @@ tracks/0/keys = {
 "values": [Vector3(0.0109593, -0.2, 0.822009)]
 }
 
-[sub_resource type="Animation" id="Animation_wyomm"]
+[sub_resource type="Animation" id="Animation_qhg8a"]
 resource_name = "sheep_bounce"
 length = 1.5
 loop_mode = 2
@@ -448,19 +464,29 @@ tracks/0/keys = {
 "values": [Vector3(0.0109593, -0.2, 0.822009), Vector3(0.011, 0.007, 0.822)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x7iak"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06iis"]
 _data = {
-"RESET": SubResource("Animation_wpy3e"),
-"sheep_bounce": SubResource("Animation_wyomm")
+"RESET": SubResource("Animation_6agnf"),
+"sheep_bounce": SubResource("Animation_qhg8a")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmbmt"]
 albedo_color = Color(0.105088, 0.317263, 0, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jp7ig"]
+
+[sub_resource type="Sky" id="Sky_2ss30"]
+sky_material = SubResource("ProceduralSkyMaterial_jp7ig")
+
+[sub_resource type="Environment" id="Environment_3kjif"]
+background_mode = 2
+sky = SubResource("Sky_2ss30")
+
 [node name="Game" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.173648, 0.984808, 0, 0.984808, 0.173648, -1, 7.5904e-09, -4.30473e-08, 20, 6, 0)
+current = true
 fov = 55.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -477,7 +503,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 [node name="UI" type="CanvasLayer" parent="GameManager"]
 follow_viewport_enabled = true
 
-[node name="Label" type="Label" parent="GameManager/UI"]
+[node name="Wintext" type="Label" parent="GameManager/UI"]
 top_level = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -497,6 +523,95 @@ Great job!"
 label_settings = SubResource("LabelSettings_txbkg")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SheepCountText" type="Label" parent="GameManager/UI"]
+offset_right = 215.0
+offset_bottom = 86.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Test"
+label_settings = SubResource("LabelSettings_txbkg")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GameManager/UI"]
+offset_left = 4.0
+offset_top = -42.0
+offset_right = 804.0
+offset_bottom = 758.0
+scale = Vector2(0.2, 0.2)
+
+[node name="SubViewport" type="SubViewport" parent="GameManager/UI/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(800, 800)
+render_target_update_mode = 4
+
+[node name="SheepShape" type="Node3D" parent="GameManager/UI/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.736682, 0.186361, -0.650054, 0.277265, 0.793523, 0.541706, 0.616786, -0.579301, 0.532903, -0.255791, -15.6379, 1.30563)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_f82fr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_l70wk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_l70wk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_l70wk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_l70wk")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_wifm6")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_wifm6")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_wifm6")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_wifm6")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_wifm6")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_wifm6")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_wifm6")
+
+[node name="Camera3D" type="Camera3D" parent="GameManager/UI/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, 0, -14.1425, 2.6138)
 
 [node name="Timer" type="Timer" parent="GameManager"]
 wait_time = 5.0
@@ -1652,7 +1767,7 @@ material = SubResource("StandardMaterial3D_xdue1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape10"]
 libraries = {
-"": SubResource("AnimationLibrary_x7iak")
+"": SubResource("AnimationLibrary_06iis")
 }
 
 [node name="Floor Colours" type="Node3D" parent="."]
@@ -1676,5 +1791,8 @@ material = SubResource("StandardMaterial3D_pmbmt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0204, -0.0655275, -110.972)
 size = Vector3(100, 1, 200)
 material = SubResource("StandardMaterial3D_pmbmt")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3kjif")
 
 [connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
