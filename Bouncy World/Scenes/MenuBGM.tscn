@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://2whw3sw81tcb"]
+
+[ext_resource type="AudioStream" uid="uid://by53cu2alk8q5" path="res://Assets/meadow-ambience-in-springtime-ivo-vicic-1-02-32.mp3" id="1_li6uj"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_li6uj")
+autoplay = true

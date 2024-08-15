@@ -1,8 +1,9 @@
-[gd_scene load_steps=45 format=3 uid="uid://dryumo3hkvp00"]
+[gd_scene load_steps=46 format=3 uid="uid://dryumo3hkvp00"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_neqjg"]
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="2_ltbx5"]
 [ext_resource type="PackedScene" uid="uid://ditao2fywc1c0" path="res://Scenes/winbox.tscn" id="3_e32cj"]
+[ext_resource type="PackedScene" uid="uid://2whw3sw81tcb" path="res://Scenes/MenuBGM.tscn" id="4_jjl82"]
 
 [sub_resource type="Animation" id="Animation_ixjga"]
 length = 0.001
@@ -1558,6 +1559,10 @@ text = "Play"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dwlku")
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("4_jjl82")]
+position = Vector2(247, 341)
+volume_db = 5.0
 
 [connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]

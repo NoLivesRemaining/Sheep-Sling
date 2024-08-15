@@ -1,9 +1,10 @@
-[gd_scene load_steps=54 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=55 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_2txsa"]
 [ext_resource type="PackedScene" uid="uid://ditao2fywc1c0" path="res://Scenes/winbox.tscn" id="4_nc5d2"]
 [ext_resource type="PackedScene" uid="uid://crjlq0i2c8mc5" path="res://Scenes/spawnpoint.tscn" id="4_qeli3"]
+[ext_resource type="PackedScene" uid="uid://cahlw7vb5t08t" path="res://Scenes/MainBGM.tscn" id="5_nhe5o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_txbkg"]
 font_size = 50
@@ -1794,5 +1795,8 @@ material = SubResource("StandardMaterial3D_pmbmt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3kjif")
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("5_nhe5o")]
+volume_db = 10.0
 
 [connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
