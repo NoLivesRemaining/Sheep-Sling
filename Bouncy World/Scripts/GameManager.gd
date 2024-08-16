@@ -31,3 +31,6 @@ func check_Score():
 
 func _on_timer_timeout():
 	get_tree().reload_current_scene()
+
+
+
