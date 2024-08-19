@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c685fcvh3eosu"
+path="res://.godot/imported/Window Bonk.wav-0cf0be90b3eeec878ca2fae0c12921a9.sample"
+
+[deps]
+
+source_file="res://Assets/Window Bonk.wav"
+dest_files=["res://.godot/imported/Window Bonk.wav-0cf0be90b3eeec878ca2fae0c12921a9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

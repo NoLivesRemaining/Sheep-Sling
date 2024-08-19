@@ -443,9 +443,9 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j17ll"]
 albedo_color = Color(0.105088, 0.317263, 0, 1)
 
-[sub_resource type="Animation" id="Animation_tp1xo"]
-resource_name = "fadein"
-length = 0.5
+[sub_resource type="Animation" id="Animation_arva5"]
+resource_name = "FadeOut"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -456,7 +456,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_2lplr"]
@@ -486,9 +498,9 @@ tracks/1/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_arva5"]
-resource_name = "FadeOut"
-length = 0.6
+[sub_resource type="Animation" id="Animation_tp1xo"]
+resource_name = "fadein"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -499,19 +511,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:mouse_filter")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yxvt5"]
