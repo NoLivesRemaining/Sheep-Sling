@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ditao2fywc1c0"]
+[gd_scene load_steps=8 format=3 uid="uid://ditao2fywc1c0"]
 
 [ext_resource type="Script" path="res://Scripts/winbox.gd" id="1_lnbra"]
+[ext_resource type="AudioStream" uid="uid://dt83hqo4w4f58" path="res://Assets/SheepCollection.mp3" id="2_5ac4n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_um7wy"]
 size = Vector3(5.8, 1, 5.8)
@@ -13,6 +14,12 @@ albedo_color = Color(0.587027, 0.418059, 0.268655, 0.996078)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vttha"]
 size = Vector3(0.1, 1, 6)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6jhsd"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("2_5ac4n")
+stream_0/weight = 1.0
 
 [node name="Winbox" type="Node3D"]
 top_level = true
@@ -236,5 +243,9 @@ shape = SubResource("BoxShape3D_vttha")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 3)
 shape = SubResource("BoxShape3D_vttha")
+
+[node name="CollectSound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_6jhsd")
+volume_db = 10.0
 
 [connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]

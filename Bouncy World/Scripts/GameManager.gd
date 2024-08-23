@@ -10,7 +10,6 @@ var sheepScore = 0
 
 func _ready():
 	sheepCount = sheepRandomiser.randi_range(6, 10)
-	$UI/Wintext.set_visible(false)
 	$UI/SheepCountText.text = str(sheepScore) + "/" + str(sheepCount)
 
 func add_point():
@@ -25,12 +24,16 @@ func spawn():
 
 func check_Score():
 	if(sheepScore == sheepCount):
-		$UI/Wintext.set_visible(true)
+		$"../Camera3D/AnimationPlayer".play("Win")
+		$UI/Wintext/AnimationPlayer.play("TextFadeIn")
+		$UI/SubViewportContainer.set_visible(false)
 		$UI/SheepCountText.set_visible(false)
+		$WinSound.play()
 		timer.start()
 
 func _on_timer_timeout():
+	$UI/ColorRect/AnimationPlayer.play("fadein")
+	$ResetTimer.start()
+
+func _on_reset_timer_timeout():
 	get_tree().reload_current_scene()
-
-
-

@@ -1,11 +1,6 @@
 extends Node3D
 
 
-
-func _on_quit_pressed():
-	get_tree().quit()
-
-
 func _on_play_pressed():
 	$CanvasLayer/Play/PlayTimer.start()
 	$CanvasLayer/ColorRect/AnimationPlayer.play("fadein")

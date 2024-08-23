@@ -1,32 +1,157 @@
-[gd_scene load_steps=61 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=67 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_2txsa"]
-[ext_resource type="AudioStream" uid="uid://c685fcvh3eosu" path="res://Assets/Window Bonk.wav" id="4_27126"]
+[ext_resource type="AudioStream" uid="uid://d1p6l7cs78w6h" path="res://Assets/LastSheep.wav" id="3_ob568"]
 [ext_resource type="PackedScene" uid="uid://ditao2fywc1c0" path="res://Scenes/winbox.tscn" id="4_nc5d2"]
 [ext_resource type="PackedScene" uid="uid://crjlq0i2c8mc5" path="res://Scenes/spawnpoint.tscn" id="4_qeli3"]
 [ext_resource type="AudioStream" uid="uid://cvd1tpwtt07qd" path="res://Assets/WindroseNew.wav" id="5_cpmr6"]
+
+[sub_resource type="Animation" id="Animation_u6tj8"]
+resource_name = "Win"
+length = 10.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(20, 6, 0), Vector3(6.24106, 3.49596, 0), Vector3(4.3858, 3.49596, -4.41391)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.174533, 1.5708, 0), Vector3(-0.3894, 1.5708, -1.00742e-08), Vector3(-0.3894, 2.38698, -1.00742e-08)]
+}
+
+[sub_resource type="Animation" id="Animation_ccfw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(20, 6, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.174533, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iyllc"]
+_data = {
+"RESET": SubResource("Animation_ccfw5"),
+"Win": SubResource("Animation_u6tj8")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_txbkg"]
 font_size = 50
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxaql"]
+[sub_resource type="Animation" id="Animation_yktni"]
+resource_name = "TextFadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yuhse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o8q0v"]
+_data = {
+"RESET": SubResource("Animation_yuhse"),
+"TextFadeIn": SubResource("Animation_yktni")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_674jd"]
 albedo_color = Color(0, 0.0709874, 0.0711856, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f82fr"]
-material = SubResource("StandardMaterial3D_vxaql")
+material = SubResource("StandardMaterial3D_674jd")
 radius = 0.2
 height = 1.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l70wk"]
-material = SubResource("StandardMaterial3D_vxaql")
+material = SubResource("StandardMaterial3D_674jd")
 radius = 0.1
 height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wifm6"]
 albedo_color = Color(0.960351, 0.960351, 0.960351, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6w2c"]
+albedo_color = Color(0.587027, 0.418059, 0.268655, 0.996078)
 
 [sub_resource type="Animation" id="Animation_arva5"]
 resource_name = "FadeOut"
@@ -107,13 +232,6 @@ _data = {
 }
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q8y1m"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6ruqy"]
-random_pitch = 2.0
-random_volume_offset_db = 1.0
-streams_count = 1
-stream_0/stream = ExtResource("4_27126")
-stream_0/weight = 1.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_npdvm"]
 friction = 0.1
@@ -572,12 +690,17 @@ sky = SubResource("Sky_2ss30")
 [node name="Game" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -0.173648, 0.984808, 0, 0.984808, 0.173648, -1, 7.5904e-09, -4.30473e-08, 20, 6, 0)
+transform = Transform3D(-4.37114e-08, -0.173648, 0.984808, 0, 0.984808, 0.173648, -1, 7.59039e-09, -4.30473e-08, 20, 6, 0)
 current = true
 fov = 55.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
 current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_iyllc")
+}
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.803466, 0.137615, -0.579228, 0.579228, -0.40558, 0.707107, -0.137615, -0.903641, -0.40558, 0, 20, 0)
@@ -594,6 +717,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 follow_viewport_enabled = true
 
 [node name="Wintext" type="Label" parent="GameManager/UI"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 top_level = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -601,22 +726,28 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -397.0
-offset_top = -106.5
+offset_top = -233.0
 offset_right = 397.0
-offset_bottom = 106.5
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-text = "You've rounded up all the sheep!
-
-Great job!"
+text = "Thats all of 'em! 
+Good work!"
 label_settings = SubResource("LabelSettings_txbkg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameManager/UI/Wintext"]
+libraries = {
+"": SubResource("AnimationLibrary_o8q0v")
+}
+
 [node name="SheepCountText" type="Label" parent="GameManager/UI"]
-offset_right = 215.0
-offset_bottom = 86.0
+offset_left = 24.0
+offset_top = 3.0
+offset_right = 239.0
+offset_bottom = 89.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Test"
@@ -638,7 +769,7 @@ size = Vector2i(800, 800)
 render_target_update_mode = 4
 
 [node name="SheepShape" type="Node3D" parent="GameManager/UI/SubViewportContainer/SubViewport"]
-transform = Transform3D(0.736682, 0.186361, -0.650054, 0.277265, 0.793523, 0.541706, 0.616786, -0.579301, 0.532903, -0.255791, -15.6379, 1.30563)
+transform = Transform3D(0.736682, 0.186361, -0.650054, 0.277265, 0.793523, 0.541706, 0.616786, -0.579301, 0.532903, 189.669, -8.44177, 64.9981)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
@@ -701,7 +832,38 @@ radius = 0.3
 material = SubResource("StandardMaterial3D_wifm6")
 
 [node name="Camera3D" type="Camera3D" parent="GameManager/UI/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, 0, -14.1425, 2.6138)
+transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, 189.925, -6.94637, 66.3063)
+
+[node name="Fencing" type="Node3D" parent="GameManager/UI/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.8, 0, 0, 0, 0.597311, 0.532184, 0, -0.532184, 0.597311, 189.761, -9.61465, 63.6891)
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="GameManager/UI/SubViewportContainer/SubViewport/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0.811814, -1.90735e-06, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b6w2c")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="GameManager/UI/SubViewportContainer/SubViewport/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b6w2c")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="GameManager/UI/SubViewportContainer/SubViewport/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -0.811242, -1.90735e-06, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_b6w2c")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="GameManager/UI/SubViewportContainer/SubViewport/Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.2, 3)
+size = Vector3(0.075, 0.2, 1.5)
+material = SubResource("StandardMaterial3D_b6w2c")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="GameManager/UI/SubViewportContainer/SubViewport/Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.2, 3)
+size = Vector3(0.075, 0.2, 1.5)
+material = SubResource("StandardMaterial3D_b6w2c")
 
 [node name="ColorRect" type="ColorRect" parent="GameManager/UI"]
 anchors_preset = 15
@@ -719,7 +881,15 @@ libraries = {
 autoplay = "FadeOut"
 
 [node name="Timer" type="Timer" parent="GameManager"]
-wait_time = 5.0
+wait_time = 10.0
+one_shot = true
+
+[node name="WinSound" type="AudioStreamPlayer3D" parent="GameManager"]
+stream = ExtResource("3_ob568")
+volume_db = 20.0
+
+[node name="ResetTimer" type="Timer" parent="GameManager"]
+wait_time = 0.5
 one_shot = true
 
 [node name="TileGroup" type="Node" parent="."]
@@ -1063,6 +1233,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -4)
 [node name="Boundaries" type="Node" parent="."]
 
 [node name="Floor Boundary" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Floor Boundary"]
@@ -1077,108 +1248,96 @@ input_ray_pickable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="Wall Boundary 1" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 10, -10)
+[node name="Wall Boundary" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 10, -11)
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Boundaries/Wall Boundary 1"]
-stream = SubResource("AudioStreamRandomizer_6ruqy")
-
-[node name="Wall Boundary 2" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 10)
+[node name="Wall Boundary2" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.006, 10, 11)
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Boundaries/Wall Boundary 2"]
-stream = SubResource("AudioStreamRandomizer_6ruqy")
-
-[node name="Wall Boundary 3" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 10, 10, 0)
+[node name="Wall Boundary3" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(-4.5897e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1.05, 4.37114e-08, 1.91069e-15, 11, 10, 0)
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Boundaries/Wall Boundary 3"]
-stream = SubResource("AudioStreamRandomizer_6ruqy")
-
-[node name="Wall Boundary 4" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -10, 10, 0)
+[node name="Wall Boundary4" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(-4.5897e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1.05, -4.37114e-08, 1.91069e-15, -11, 10, 0)
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Boundaries/Wall Boundary 4"]
-stream = SubResource("AudioStreamRandomizer_6ruqy")
-
-[node name="Wall Boundary 5" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 30, -10)
+[node name="Wall Boundary 5" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 30, -11)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="Wall Boundary 6" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 10)
+[node name="Wall Boundary 6" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 11)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="Wall Boundary 7" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 10, 30, 0)
+[node name="Wall Boundary 7" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(-4.5897e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1.05, 4.37114e-08, 1.91069e-15, 11, 30, 0)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="Wall Boundary 8" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -10, 30, 0)
+[node name="Wall Boundary 8" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(-4.5897e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1.05, -4.37114e-08, 1.91069e-15, -11, 30, 0)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="Wall Boundary 9" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 50, -10)
+[node name="Wall Boundary 9" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 50, -11)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="Wall Boundary 10" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 10)
+[node name="Wall Boundary 10" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 11)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="Wall Boundary 11" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 10, 50, 0)
+[node name="Wall Boundary 11" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(-4.5897e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1.05, 4.37114e-08, 1.91069e-15, 11, 50, 0)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("WorldBoundaryShape3D_q8y1m")
 
-[node name="Wall Boundary 12" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -10, 50, 0)
+[node name="Wall Boundary 12" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
+transform = Transform3D(-4.5897e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1.05, -4.37114e-08, 1.91069e-15, -11, 50, 0)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 12"]
@@ -1918,3 +2077,4 @@ volume_db = 10.0
 autoplay = true
 
 [connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="GameManager/ResetTimer" to="GameManager" method="_on_reset_timer_timeout"]

@@ -10,6 +10,7 @@ func _ready():
 
 func _on_win_area_body_entered(body):
 	game_manager.add_point()
+	$CollectSound.play()
 	sheepSpawnArray[sheepTracker].set_visible(true)
 	sheepSpawnArray[sheepTracker].get_node("AnimationPlayer").play("sheep_bounce")
 	sheepTracker += 1

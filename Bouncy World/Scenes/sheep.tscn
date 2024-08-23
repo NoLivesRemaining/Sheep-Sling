@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd61do5fi5nl5"]
+[gd_scene load_steps=14 format=3 uid="uid://bd61do5fi5nl5"]
 
 [ext_resource type="Script" path="res://Scripts/SheepControl.gd" id="1_c6xbk"]
 [ext_resource type="AudioStream" uid="uid://crk00vfjqnr0m" path="res://Assets/SheepSound1.wav" id="2_lsj8w"]
 [ext_resource type="AudioStream" uid="uid://d1hulntyej8l0" path="res://Assets/SheepSound2.wav" id="3_egx7p"]
 [ext_resource type="AudioStream" uid="uid://b384wbk6tp7hk" path="res://Assets/SheepSound3.mp3" id="4_u7p7k"]
+[ext_resource type="AudioStream" uid="uid://c685fcvh3eosu" path="res://Assets/Window Bonk.wav" id="5_o57hb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y1cjb"]
 friction = 0.9
@@ -40,9 +41,17 @@ stream_1/weight = 1.0
 stream_2/stream = ExtResource("4_u7p7k")
 stream_2/weight = 1.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_08arx"]
+random_pitch = 2.0
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("5_o57hb")
+stream_0/weight = 1.0
+
 [node name="Sheep" type="RigidBody3D" groups=["Sheep"]]
 collision_layer = 2
 collision_mask = 3
+input_ray_pickable = false
 physics_material_override = SubResource("PhysicsMaterial_y1cjb")
 gravity_scale = 0.9
 max_contacts_reported = 5
@@ -117,6 +126,10 @@ material = SubResource("StandardMaterial3D_pq3xs")
 
 [node name="SheepSound" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_eyw53")
-volume_db = -5.0
+volume_db = -7.0
+
+[node name="BonkSound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_08arx")
+volume_db = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

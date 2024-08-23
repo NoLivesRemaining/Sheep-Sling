@@ -1,24 +1,28 @@
 extends RigidBody3D
 
-var startingPosition
 var startingRotation
-const minimumVelocity = 0.05
+var currentRotation
+const minimumVelocity = 0.025
 
 @onready var SFX = $SheepSound
+@onready var Bonk = $BonkSound
 
 func _ready():
-	startingPosition = position.y
 	startingRotation = rotation
 
 func _process(delta):
-	if(self.rotation != startingRotation):
-		resetPosition()
+	if(self.rotation != startingRotation && linear_velocity.length() < minimumVelocity):
+		resetRotation()
 
-func resetPosition():
-	if(linear_velocity.length() < minimumVelocity):
-		var tween = create_tween()
-		tween.tween_property(self, "rotation", startingRotation, 0.5)
+func resetRotation():
+	currentRotation = rotation.y
+	var newRotation = Vector3(startingRotation.x, currentRotation, startingRotation.z)
+	var tween = create_tween()
+	tween.tween_property(self, "rotation", newRotation, 0.5)
 
 func _on_body_entered(body: Node) -> void:
-	if(!self.SFX.playing && !linear_velocity.length() < minimumVelocity*5):
+	if(body.is_in_group("BonkBoundaries") && linear_velocity.length() > minimumVelocity * 100):
+		self.Bonk.play()
+	elif (!self.SFX.playing && linear_velocity.length() > minimumVelocity * 100):
 		self.SFX.play()
+	
