@@ -9,7 +9,7 @@ var elasticLocation
 var acceleration = 30
 var elasticAcceleration
 var speed
-const roundingThreshold = 0.1
+const roundingThreshold = 0.2
 
 
 func _on_area_3d_input_event(camera, event, positions, normal, shape_idx):
@@ -25,6 +25,9 @@ func _input(event):
 			self.elasticMultiplier = position.y/2
 			self.elasticAcceleration = acceleration * abs(elasticMultiplier)
 			self.elasticLocation = starting_position - elasticMultiplier
+		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true and self.isPickedUp == false:
+			position.y = starting_position
+			elasticLocation = starting_position
 
 func _ready():
 	starting_position = position.y
@@ -34,7 +37,7 @@ func _physics_process(delta):
 		next_mouse_position = get_viewport().get_mouse_position()
 		position.y += (-(next_mouse_position.y - prev_mouse_position.y) * delta)
 		prev_mouse_position = next_mouse_position
-	if(!isPickedUp && position.y != starting_position && elasticLocation != starting_position):
+	if(!isPickedUp and position.y != starting_position and elasticLocation != starting_position):
 			if(position.y == elasticLocation):
 				if(abs(elasticLocation) <= roundingThreshold):
 					position.y = starting_position
@@ -43,8 +46,9 @@ func _physics_process(delta):
 					elasticMultiplier = position.y/2
 					elasticAcceleration = acceleration * abs(elasticMultiplier)
 					elasticLocation = starting_position - elasticMultiplier
-			speed = delta * elasticAcceleration
-			position.y = move_toward(position.y, elasticLocation, speed)
+			else:
+				speed = elasticAcceleration * delta
+				position.y = move_toward(position.y, elasticLocation, speed)
 
 
 func _on_area_3d_body_entered(body):

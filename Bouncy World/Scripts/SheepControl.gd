@@ -11,7 +11,7 @@ func _ready():
 	startingRotation = rotation
 
 func _process(delta):
-	if(self.rotation != startingRotation && linear_velocity.length() < minimumVelocity):
+	if(self.rotation != startingRotation and linear_velocity.length() < minimumVelocity):
 		resetRotation()
 
 func resetRotation():
@@ -21,8 +21,8 @@ func resetRotation():
 	tween.tween_property(self, "rotation", newRotation, 0.5)
 
 func _on_body_entered(body: Node) -> void:
-	if(body.is_in_group("BonkBoundaries") && linear_velocity.length() > minimumVelocity * 100):
+	if(body.is_in_group("BonkBoundaries") and linear_velocity.length() > minimumVelocity * 100):
 		self.Bonk.play()
-	elif (!self.SFX.playing && linear_velocity.length() > minimumVelocity * 100):
+	elif (!self.SFX.playing and linear_velocity.length() > minimumVelocity * 100):
 		self.SFX.play()
 	

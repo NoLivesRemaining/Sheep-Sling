@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=75 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_2txsa"]
@@ -6,6 +6,33 @@
 [ext_resource type="PackedScene" uid="uid://ditao2fywc1c0" path="res://Scenes/winbox.tscn" id="4_nc5d2"]
 [ext_resource type="PackedScene" uid="uid://crjlq0i2c8mc5" path="res://Scenes/spawnpoint.tscn" id="4_qeli3"]
 [ext_resource type="AudioStream" uid="uid://cvd1tpwtt07qd" path="res://Assets/WindroseNew.wav" id="5_cpmr6"]
+
+[sub_resource type="Animation" id="Animation_ccfw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(20, 6, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.174533, 1.5708, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_u6tj8"]
 resource_name = "Win"
@@ -36,8 +63,9 @@ tracks/1/keys = {
 "values": [Vector3(-0.174533, 1.5708, 0), Vector3(-0.3894, 1.5708, -1.00742e-08), Vector3(-0.3894, 2.38698, -1.00742e-08)]
 }
 
-[sub_resource type="Animation" id="Animation_ccfw5"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_cpa8e"]
+resource_name = "position 2"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,10 +73,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(20, 6, 0)]
+"values": [Vector3(20, 6, 0), Vector3(3, 6, -20), Vector3(0, 6, -20)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -57,49 +85,200 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.174533, 1.5708, 0)]
+"values": [Vector3(-0.174533, 1.5708, 0), Vector3(-0.174533, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b0te5"]
+resource_name = "position 3"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 6, -20), Vector3(-20, 6, -2), Vector3(-20, 6, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.174533, 3.14159, 0), Vector3(-0.174533, 4.71239, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_67dl3"]
+resource_name = "position 4"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-20, 6, 0), Vector3(-2, 6, 20), Vector3(0, 6, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.174533, 4.71239, 0), Vector3(-0.174533, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fponl"]
+resource_name = "position 1"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 6, 20), Vector3(20, 6, 2), Vector3(20, 6, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.174533, 6.28319, 0), Vector3(-0.174533, 7.85398, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j7irw"]
+resource_name = "Win2"
+length = 10.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 6, -20), Vector3(6.24106, 3.49596, 0), Vector3(4.3858, 3.49596, -4.41391)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.174533, 3.14159, 0), Vector3(-0.3894, 1.5708, -1.00742e-08), Vector3(-0.3894, 2.38698, -1.00742e-08)]
+}
+
+[sub_resource type="Animation" id="Animation_keq0v"]
+resource_name = "Win3"
+length = 10.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-20, 6, 0), Vector3(6.24106, 3.49596, 0), Vector3(4.3858, 3.49596, -4.41391)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.174533, 4.71239, 0), Vector3(-0.3894, 1.5708, -1.00742e-08), Vector3(-0.3894, 2.38698, -1.00742e-08)]
+}
+
+[sub_resource type="Animation" id="Animation_f6vsa"]
+resource_name = "Win4"
+length = 10.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 6, 20), Vector3(6.24106, 3.49596, 0), Vector3(4.3858, 3.49596, -4.41391)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.174533, 0, 0), Vector3(-0.3894, 1.5708, -1.00742e-08), Vector3(-0.3894, 2.38698, -1.00742e-08)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iyllc"]
 _data = {
 "RESET": SubResource("Animation_ccfw5"),
-"Win": SubResource("Animation_u6tj8")
+"Win": SubResource("Animation_u6tj8"),
+"Win2": SubResource("Animation_j7irw"),
+"Win3": SubResource("Animation_keq0v"),
+"Win4": SubResource("Animation_f6vsa"),
+"position 1": SubResource("Animation_fponl"),
+"position 2": SubResource("Animation_cpa8e"),
+"position 3": SubResource("Animation_b0te5"),
+"position 4": SubResource("Animation_67dl3")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_txbkg"]
 font_size = 50
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_yktni"]
-resource_name = "TextFadeIn"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_yuhse"]
 length = 0.001
@@ -128,11 +307,43 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_yktni"]
+resource_name = "TextFadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o8q0v"]
 _data = {
 "RESET": SubResource("Animation_yuhse"),
 "TextFadeIn": SubResource("Animation_yktni")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_3dawf"]
+font_size = 25
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_674jd"]
 albedo_color = Color(0, 0.0709874, 0.0711856, 1)
@@ -679,6 +890,11 @@ _data = {
 albedo_color = Color(0.105088, 0.317263, 0, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jp7ig"]
+sky_top_color = Color(0.171584, 0.729152, 0.859519, 1)
+sky_horizon_color = Color(0.478554, 0.703677, 0.698329, 1)
+sky_curve = 0.5
+ground_bottom_color = Color(0.300084, 0.494567, 0.228963, 1)
+ground_horizon_color = Color(0.478431, 0.701961, 0.698039, 1)
 
 [sub_resource type="Sky" id="Sky_2ss30"]
 sky_material = SubResource("ProceduralSkyMaterial_jp7ig")
@@ -690,7 +906,7 @@ sky = SubResource("Sky_2ss30")
 [node name="Game" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -0.173648, 0.984808, 0, 0.984808, 0.173648, -1, 7.59039e-09, -4.30473e-08, 20, 6, 0)
+transform = Transform3D(-3.61999e-06, -0.173648, 0.984808, 0, 0.984808, 0.173648, -1, 6.28605e-07, -3.56499e-06, 20, 6, 0)
 current = true
 fov = 55.0
 
@@ -752,6 +968,23 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Test"
 label_settings = SubResource("LabelSettings_txbkg")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="InstructionsText" type="Label" parent="GameManager/UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -405.0
+offset_top = -86.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Rotate Camera >  "
+label_settings = SubResource("LabelSettings_3dawf")
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -2049,23 +2282,23 @@ libraries = {
 [node name="Floor Colours" type="Node3D" parent="."]
 
 [node name="Floor Texture" type="CSGBox3D" parent="Floor Colours"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.98, -0.0655275, 0.0280256)
-size = Vector3(300, 1, 425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.98, -0.066, 0)
+size = Vector3(300, 1, 625)
 material = SubResource("StandardMaterial3D_pmbmt")
 
 [node name="Floor Texture4" type="CSGBox3D" parent="Floor Colours"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0204, -0.0655275, 0.0280256)
-size = Vector3(2, 1, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161, -0.066, 0)
+size = Vector3(300, 1, 625)
 material = SubResource("StandardMaterial3D_pmbmt")
 
 [node name="Floor Texture2" type="CSGBox3D" parent="Floor Colours"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0204, -0.0655275, 111.028)
-size = Vector3(100, 1, 200)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066, 161)
+size = Vector3(22, 1, 300)
 material = SubResource("StandardMaterial3D_pmbmt")
 
 [node name="Floor Texture3" type="CSGBox3D" parent="Floor Colours"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0204, -0.0655275, -110.972)
-size = Vector3(100, 1, 200)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066, -161)
+size = Vector3(22, 1, 300)
 material = SubResource("StandardMaterial3D_pmbmt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
