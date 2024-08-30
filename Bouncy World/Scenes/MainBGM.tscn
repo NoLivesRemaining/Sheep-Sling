@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cahlw7vb5t08t"]
-
-[ext_resource type="AudioStream" uid="uid://cvd1tpwtt07qd" path="res://Assets/WindroseNew.wav" id="1_cjjbf"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_cjjbf")
-autoplay = true

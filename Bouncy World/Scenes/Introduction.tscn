@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dp65htjh51hx8"]
 
-[ext_resource type="AudioStream" uid="uid://cajemqllyvfjp" path="res://Assets/SheepSlingIntro.wav" id="1_nmq45"]
-[ext_resource type="Script" path="res://Scripts/va_scene.gd" id="1_qxicu"]
+[ext_resource type="Script" path="res://Scripts/Introduction_Manager.gd" id="1_pspxt"]
+[ext_resource type="AudioStream" uid="uid://cajemqllyvfjp" path="res://Sound/Introduction_VA.wav" id="2_jvs50"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rtw0y"]
 font_size = 50
@@ -13,19 +13,19 @@ font_size = 50
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[node name="VA Scene" type="Node3D"]
-script = ExtResource("1_qxicu")
+[node name="Introduction" type="Node3D"]
+script = ExtResource("1_pspxt")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_nmq45")
+[node name="Introdution_VA" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jvs50")
 volume_db = 3.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Start_Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 autostart = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Blackout_Curtain" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Sentence_1_Text" type="Label" parent="."]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,11 +51,11 @@ text = "Ah, the sheep go out!
 label_settings = SubResource("LabelSettings_rtw0y")
 horizontal_alignment = 1
 
-[node name="TextTimer" type="Timer" parent="Label"]
+[node name="Sentence_1_Timer" type="Timer" parent="Sentence_1_Text"]
 wait_time = 0.7
 one_shot = true
 
-[node name="Label2" type="Label" parent="."]
+[node name="Sentence_2_Text" type="Label" parent="."]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -73,11 +73,11 @@ text = "Throw 'em back in, would ya?
 label_settings = SubResource("LabelSettings_nymkr")
 horizontal_alignment = 1
 
-[node name="TextTimer2" type="Timer" parent="Label2"]
+[node name="Sentence_2_Timer" type="Timer" parent="Sentence_2_Text"]
 wait_time = 2.8
 one_shot = true
 
-[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Label/TextTimer" to="." method="_on_text_timer_timeout"]
-[connection signal="timeout" from="Label2/TextTimer2" to="." method="_on_text_timer_2_timeout"]
+[connection signal="finished" from="Introdution_VA" to="." method="_on_introdution_va_finished"]
+[connection signal="timeout" from="Start_Timer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="Sentence_1_Text/Sentence_1_Timer" to="." method="_on_sentence_1_timer_timeout"]
+[connection signal="timeout" from="Sentence_2_Text/Sentence_2_Timer" to="." method="_on_sentence_2_timer_timeout"]

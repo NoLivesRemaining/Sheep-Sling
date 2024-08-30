@@ -1,11 +1,11 @@
 [gd_scene load_steps=75 format=3 uid="uid://bo3ye33dg27kd"]
 
-[ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/tile.tscn" id="1_sn8an"]
-[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_2txsa"]
-[ext_resource type="AudioStream" uid="uid://d1p6l7cs78w6h" path="res://Assets/LastSheep.wav" id="3_ob568"]
-[ext_resource type="PackedScene" uid="uid://ditao2fywc1c0" path="res://Scenes/winbox.tscn" id="4_nc5d2"]
-[ext_resource type="PackedScene" uid="uid://crjlq0i2c8mc5" path="res://Scenes/spawnpoint.tscn" id="4_qeli3"]
-[ext_resource type="AudioStream" uid="uid://cvd1tpwtt07qd" path="res://Assets/WindroseNew.wav" id="5_cpmr6"]
+[ext_resource type="Script" path="res://Scripts/Main_Game_Manager.gd" id="1_rvem5"]
+[ext_resource type="PackedScene" uid="uid://crjlq0i2c8mc5" path="res://Scenes/Sheep_Spawn_Point.tscn" id="2_ld0uj"]
+[ext_resource type="AudioStream" uid="uid://d1p6l7cs78w6h" path="res://Sound/Win_SFX.wav" id="3_l4mvi"]
+[ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/Bounce_Tile.tscn" id="4_j5icq"]
+[ext_resource type="PackedScene" uid="uid://ditao2fywc1c0" path="res://Scenes/Sheep_Pen.tscn" id="5_6lqi3"]
+[ext_resource type="AudioStream" uid="uid://cvd1tpwtt07qd" path="res://Sound/Main_Music.wav" id="6_u6b72"]
 
 [sub_resource type="Animation" id="Animation_ccfw5"]
 length = 0.001
@@ -34,10 +34,9 @@ tracks/1/keys = {
 "values": [Vector3(-0.174533, 1.5708, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_u6tj8"]
-resource_name = "Win"
-length = 10.0
-loop_mode = 2
+[sub_resource type="Animation" id="Animation_fponl"]
+resource_name = "position 1"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,10 +44,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 10),
+"times": PackedFloat32Array(0, 0.9, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(20, 6, 0), Vector3(6.24106, 3.49596, 0), Vector3(4.3858, 3.49596, -4.41391)]
+"values": [Vector3(0, 6, 20), Vector3(20, 6, 2), Vector3(20, 6, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -57,10 +56,10 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 10),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.174533, 1.5708, 0), Vector3(-0.3894, 1.5708, -1.00742e-08), Vector3(-0.3894, 2.38698, -1.00742e-08)]
+"values": [Vector3(-0.174533, 6.28319, 0), Vector3(-0.174533, 7.85398, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_cpa8e"]
@@ -147,9 +146,10 @@ tracks/1/keys = {
 "values": [Vector3(-0.174533, 4.71239, 0), Vector3(-0.174533, 6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_fponl"]
-resource_name = "position 1"
-length = 1.2
+[sub_resource type="Animation" id="Animation_u6tj8"]
+resource_name = "Win"
+length = 10.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -157,10 +157,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9, 1.2),
+"times": PackedFloat32Array(0, 1.5, 10),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 6, 20), Vector3(20, 6, 2), Vector3(20, 6, 0)]
+"values": [Vector3(20, 6, 0), Vector3(6.24106, 3.49596, 0), Vector3(4.3858, 3.49596, -4.41391)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -169,10 +169,10 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.174533, 6.28319, 0), Vector3(-0.174533, 7.85398, 0)]
+"values": [Vector3(-0.174533, 1.5708, 0), Vector3(-0.3894, 1.5708, -1.00742e-08), Vector3(-0.3894, 2.38698, -1.00742e-08)]
 }
 
 [sub_resource type="Animation" id="Animation_j7irw"]
@@ -265,14 +265,14 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iyllc"]
 _data = {
 "RESET": SubResource("Animation_ccfw5"),
-"Win": SubResource("Animation_u6tj8"),
-"Win2": SubResource("Animation_j7irw"),
-"Win3": SubResource("Animation_keq0v"),
-"Win4": SubResource("Animation_f6vsa"),
-"position 1": SubResource("Animation_fponl"),
-"position 2": SubResource("Animation_cpa8e"),
-"position 3": SubResource("Animation_b0te5"),
-"position 4": SubResource("Animation_67dl3")
+"View_Position_1": SubResource("Animation_fponl"),
+"View_Position_2": SubResource("Animation_cpa8e"),
+"View_Position_3": SubResource("Animation_b0te5"),
+"View_Position_4": SubResource("Animation_67dl3"),
+"Win_Position_1": SubResource("Animation_u6tj8"),
+"Win_Position_2": SubResource("Animation_j7irw"),
+"Win_Position_3": SubResource("Animation_keq0v"),
+"Win_Position_4": SubResource("Animation_f6vsa")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_txbkg"]
@@ -364,34 +364,6 @@ albedo_color = Color(0.960351, 0.960351, 0.960351, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6w2c"]
 albedo_color = Color(0.587027, 0.418059, 0.268655, 0.996078)
 
-[sub_resource type="Animation" id="Animation_arva5"]
-resource_name = "FadeOut"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:mouse_filter")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
 [sub_resource type="Animation" id="Animation_2lplr"]
 length = 0.001
 tracks/0/type = "value"
@@ -435,14 +407,40 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxvt5"]
-_data = {
-"FadeOut": SubResource("Animation_arva5"),
-"RESET": SubResource("Animation_2lplr"),
-"fadein": SubResource("Animation_tp1xo")
+[sub_resource type="Animation" id="Animation_arva5"]
+resource_name = "FadeOut"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q8y1m"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxvt5"]
+_data = {
+"RESET": SubResource("Animation_2lplr"),
+"fadeIn": SubResource("Animation_tp1xo"),
+"fadeOut": SubResource("Animation_arva5")
+}
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_npdvm"]
 friction = 0.1
@@ -488,6 +486,8 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kw6y6"]
 size = Vector3(2, 2, 2)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q8y1m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jroan"]
 albedo_color = Color(0, 0.0709874, 0.0711856, 1)
@@ -886,53 +886,54 @@ _data = {
 "sheep_bounce": SubResource("Animation_qhg8a")
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fcfx2"]
+
+[sub_resource type="Sky" id="Sky_tdx17"]
+sky_material = SubResource("ProceduralSkyMaterial_fcfx2")
+
+[sub_resource type="Environment" id="Environment_tpmtl"]
+background_mode = 2
+sky = SubResource("Sky_tdx17")
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmbmt"]
 albedo_color = Color(0.105088, 0.317263, 0, 1)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jp7ig"]
-sky_top_color = Color(0.171584, 0.729152, 0.859519, 1)
-sky_horizon_color = Color(0.478554, 0.703677, 0.698329, 1)
-sky_curve = 0.5
-ground_bottom_color = Color(0.300084, 0.494567, 0.228963, 1)
-ground_horizon_color = Color(0.478431, 0.701961, 0.698039, 1)
+[node name="Main" type="Node3D"]
 
-[sub_resource type="Sky" id="Sky_2ss30"]
-sky_material = SubResource("ProceduralSkyMaterial_jp7ig")
-
-[sub_resource type="Environment" id="Environment_3kjif"]
-background_mode = 2
-sky = SubResource("Sky_2ss30")
-
-[node name="Game" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-3.61999e-06, -0.173648, 0.984808, 0, 0.984808, 0.173648, -1, 6.28605e-07, -3.56499e-06, 20, 6, 0)
+[node name="Main_Camera" type="Camera3D" parent="."]
+transform = Transform3D(-3.61999e-06, -0.173648, 0.984808, 0, 0.984808, 0.173648, -1, 6.28605e-07, -3.565e-06, 20, 6, 0)
 current = true
 fov = 55.0
 
-[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+[node name="Audio_Listener" type="AudioListener3D" parent="Main_Camera"]
 current = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+[node name="Main_Camera_Animation_Player" type="AnimationPlayer" parent="Main_Camera"]
 libraries = {
 "": SubResource("AnimationLibrary_iyllc")
 }
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.803466, 0.137615, -0.579228, 0.579228, -0.40558, 0.707107, -0.137615, -0.903641, -0.40558, 0, 20, 0)
-shadow_enabled = true
-
-[node name="GameManager" type="Node" parent="."]
+[node name="Game_Manager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("3_2txsa")
+script = ExtResource("1_rvem5")
 
-[node name="Spawnpoint" parent="GameManager" instance=ExtResource("4_qeli3")]
+[node name="Sheep_Spawner" parent="Game_Manager" instance=ExtResource("2_ld0uj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 
-[node name="UI" type="CanvasLayer" parent="GameManager"]
+[node name="Win_SFX" type="AudioStreamPlayer3D" parent="Game_Manager"]
+stream = ExtResource("3_l4mvi")
+volume_db = 20.0
+
+[node name="Game_Reset_Timer" type="Timer" parent="Game_Manager"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Main_UI" type="CanvasLayer" parent="Game_Manager"]
 follow_viewport_enabled = true
 
-[node name="Wintext" type="Label" parent="GameManager/UI"]
+[node name="Win_Text" type="Label" parent="Game_Manager/Main_UI"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 top_level = true
@@ -954,12 +955,12 @@ label_settings = SubResource("LabelSettings_txbkg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GameManager/UI/Wintext"]
+[node name="Win_Text_Animation_Player" type="AnimationPlayer" parent="Game_Manager/Main_UI/Win_Text"]
 libraries = {
 "": SubResource("AnimationLibrary_o8q0v")
 }
 
-[node name="SheepCountText" type="Label" parent="GameManager/UI"]
+[node name="Sheep_Count_Text" type="Label" parent="Game_Manager/Main_UI"]
 offset_left = 24.0
 offset_top = 3.0
 offset_right = 239.0
@@ -971,7 +972,7 @@ label_settings = SubResource("LabelSettings_txbkg")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="InstructionsText" type="Label" parent="GameManager/UI"]
+[node name="Instructions_Text" type="Label" parent="Game_Manager/Main_UI"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -988,117 +989,117 @@ label_settings = SubResource("LabelSettings_3dawf")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="GameManager/UI"]
+[node name="Sheep_Count_Sheep_Viewport" type="SubViewportContainer" parent="Game_Manager/Main_UI"]
 offset_left = 4.0
 offset_top = -42.0
 offset_right = 804.0
 offset_bottom = 758.0
 scale = Vector2(0.2, 0.2)
 
-[node name="SubViewport" type="SubViewport" parent="GameManager/UI/SubViewportContainer"]
+[node name="Sheep_Count_SubViewport" type="SubViewport" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(800, 800)
 render_target_update_mode = 4
 
-[node name="SheepShape" type="Node3D" parent="GameManager/UI/SubViewportContainer/SubViewport"]
+[node name="Sheep_Viewport_Sheep" type="Node3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport"]
 transform = Transform3D(0.736682, 0.186361, -0.650054, 0.277265, 0.793523, 0.541706, 0.616786, -0.579301, 0.532903, 189.669, -8.44177, 64.9981)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_f82fr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_l70wk")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_l70wk")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_l70wk")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_l70wk")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_wifm6")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_wifm6")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_wifm6")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_wifm6")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_wifm6")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_wifm6")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="GameManager/UI/SubViewportContainer/SubViewport/SheepShape"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_wifm6")
 
-[node name="Camera3D" type="Camera3D" parent="GameManager/UI/SubViewportContainer/SubViewport"]
+[node name="Sheep_Viewport_Camera" type="Camera3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, 189.925, -6.94637, 66.3063)
 
-[node name="Fencing" type="Node3D" parent="GameManager/UI/SubViewportContainer/SubViewport"]
+[node name="Sheep_Viewport_Fencing" type="Node3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport"]
 transform = Transform3D(0.8, 0, 0, 0, 0.597311, 0.532184, 0, -0.532184, 0.597311, 189.761, -9.61465, 63.6891)
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="GameManager/UI/SubViewportContainer/SubViewport/Fencing"]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Fencing"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0.811814, -1.90735e-06, 3)
 radius = 0.1
 height = 1.0
 material = SubResource("StandardMaterial3D_b6w2c")
 
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="GameManager/UI/SubViewportContainer/SubViewport/Fencing"]
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Fencing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 radius = 0.1
 height = 1.0
 material = SubResource("StandardMaterial3D_b6w2c")
 
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="GameManager/UI/SubViewportContainer/SubViewport/Fencing"]
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Fencing"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -0.811242, -1.90735e-06, 3)
 radius = 0.1
 height = 1.0
 material = SubResource("StandardMaterial3D_b6w2c")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="GameManager/UI/SubViewportContainer/SubViewport/Fencing"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Fencing"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.2, 3)
 size = Vector3(0.075, 0.2, 1.5)
 material = SubResource("StandardMaterial3D_b6w2c")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="GameManager/UI/SubViewportContainer/SubViewport/Fencing"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Fencing"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.2, 3)
 size = Vector3(0.075, 0.2, 1.5)
 material = SubResource("StandardMaterial3D_b6w2c")
 
-[node name="ColorRect" type="ColorRect" parent="GameManager/UI"]
+[node name="Fade_In_Out_Curtain" type="ColorRect" parent="Game_Manager/Main_UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1107,1207 +1108,1209 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GameManager/UI/ColorRect"]
+[node name="Fade_In_Out_Animation_Player" type="AnimationPlayer" parent="Game_Manager/Main_UI/Fade_In_Out_Curtain"]
 libraries = {
 "": SubResource("AnimationLibrary_yxvt5")
 }
-autoplay = "FadeOut"
+autoplay = "fadeOut"
 
-[node name="Timer" type="Timer" parent="GameManager"]
+[node name="Fade_Out_Timer" type="Timer" parent="Game_Manager/Main_UI/Fade_In_Out_Curtain"]
 wait_time = 10.0
 one_shot = true
 
-[node name="WinSound" type="AudioStreamPlayer3D" parent="GameManager"]
-stream = ExtResource("3_ob568")
-volume_db = 20.0
+[node name="Bounce_Tiles" type="Node" parent="."]
 
-[node name="ResetTimer" type="Timer" parent="GameManager"]
-wait_time = 0.5
-one_shot = true
-
-[node name="TileGroup" type="Node" parent="."]
-
-[node name="Tile" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, 0)
 
-[node name="Tile2" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile2" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, 0)
 
-[node name="Tile3" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile3" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 0)
 
-[node name="Tile4" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile4" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 0)
 
-[node name="Tile5" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile5" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, 2)
 
-[node name="Tile6" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile6" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, 2)
 
-[node name="Tile7" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile7" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 2)
 
-[node name="Tile8" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile8" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 2)
 
-[node name="Tile9" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile9" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, 4)
 
-[node name="Tile10" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile10" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, 4)
 
-[node name="Tile11" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile11" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 4)
 
-[node name="Tile12" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile12" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 4)
 
-[node name="Tile13" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile13" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, 6)
 
-[node name="Tile14" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile14" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, 6)
 
-[node name="Tile15" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile15" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 6)
 
-[node name="Tile16" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile16" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 6)
 
-[node name="Tile25" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile25" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, -8)
 
-[node name="Tile26" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile26" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, -8)
 
-[node name="Tile27" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile27" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, -8)
 
-[node name="Tile28" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile28" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, -8)
 
-[node name="Tile29" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile29" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, -6)
 
-[node name="Tile30" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile30" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, -6)
 
-[node name="Tile31" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile31" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, -6)
 
-[node name="Tile32" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile32" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, -6)
 
-[node name="Tile33" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile33" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, -4)
 
-[node name="Tile34" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile34" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, -4)
 
-[node name="Tile35" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile35" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, -4)
 
-[node name="Tile36" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile36" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, -4)
 
-[node name="Tile37" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile37" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, -2)
 
-[node name="Tile38" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile38" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, -2)
 
-[node name="Tile39" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile39" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, -2)
 
-[node name="Tile40" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile40" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, -2)
 
-[node name="Tile41" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile41" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, -10)
 
-[node name="Tile42" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile42" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, -10)
 
-[node name="Tile43" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile43" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, -10)
 
-[node name="Tile44" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile44" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, -10)
 
-[node name="Tile17" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile17" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, 8)
 
-[node name="Tile18" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile18" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, 8)
 
-[node name="Tile19" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile19" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 8)
 
-[node name="Tile20" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile20" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 8)
 
-[node name="Tile21" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile21" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, 10)
 
-[node name="Tile91" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile91" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 10)
 
-[node name="Tile22" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile22" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, 10)
 
-[node name="Tile23" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile23" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 10)
 
-[node name="Tile24" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile24" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 10)
 
-[node name="Tile45" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile45" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 0)
 
-[node name="Tile46" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile46" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, 0)
 
-[node name="Tile47" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile47" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 0)
 
-[node name="Tile48" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile48" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 0)
 
-[node name="Tile49" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile49" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 2)
 
-[node name="Tile50" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile50" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, 2)
 
-[node name="Tile51" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile51" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 2)
 
-[node name="Tile52" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile52" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 2)
 
-[node name="Tile53" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile53" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 4)
 
-[node name="Tile54" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile54" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, 4)
 
-[node name="Tile55" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile55" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 4)
 
-[node name="Tile56" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile56" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 4)
 
-[node name="Tile57" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile57" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 6)
 
-[node name="Tile58" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile58" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, 6)
 
-[node name="Tile59" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile59" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 6)
 
-[node name="Tile60" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile60" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 6)
 
-[node name="Tile61" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile61" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, -8)
 
-[node name="Tile62" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile62" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, -8)
 
-[node name="Tile63" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile63" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, -8)
 
-[node name="Tile64" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile64" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, -8)
 
-[node name="Tile65" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile65" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, -6)
 
-[node name="Tile66" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile66" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, -6)
 
-[node name="Tile67" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile67" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, -6)
 
-[node name="Tile68" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile68" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, -6)
 
-[node name="Tile69" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile69" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, -4)
 
-[node name="Tile70" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile70" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, -4)
 
-[node name="Tile71" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile71" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, -4)
 
-[node name="Tile72" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile72" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, -4)
 
-[node name="Tile73" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile73" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, -2)
 
-[node name="Tile74" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile74" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, -2)
 
-[node name="Tile75" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile75" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, -2)
 
-[node name="Tile76" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile76" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, -2)
 
-[node name="Tile77" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile77" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, -10)
 
-[node name="Tile78" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile78" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, -10)
 
-[node name="Tile79" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile79" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, -10)
 
-[node name="Tile80" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile80" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, -10)
 
-[node name="Tile81" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile81" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 8)
 
-[node name="Tile82" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile82" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, 8)
 
-[node name="Tile83" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile83" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 8)
 
-[node name="Tile84" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile84" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 8)
 
-[node name="Tile85" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile85" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 10)
 
-[node name="Tile86" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile86" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, 10)
 
-[node name="Tile87" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile87" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 10)
 
-[node name="Tile88" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile88" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 10)
 
-[node name="Tile89" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile89" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 10)
 
-[node name="Tile90" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile90" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 10)
 
-[node name="Tile92" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile92" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 8)
 
-[node name="Tile93" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile93" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 8)
 
-[node name="Tile94" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile94" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 8)
 
-[node name="Tile95" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile95" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 6)
 
-[node name="Tile96" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile96" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 6)
 
-[node name="Tile97" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile97" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 6)
 
-[node name="Tile98" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile98" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 4)
 
-[node name="Tile99" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile99" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 4)
 
-[node name="Tile100" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile100" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 4)
 
-[node name="Tile101" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile101" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, -10)
 
-[node name="Tile102" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile102" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, -10)
 
-[node name="Tile103" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile103" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -10)
 
-[node name="Tile104" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile104" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, -8)
 
-[node name="Tile105" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile105" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, -8)
 
-[node name="Tile106" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile106" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -8)
 
-[node name="Tile107" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile107" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, -6)
 
-[node name="Tile108" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile108" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, -6)
 
-[node name="Tile109" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile109" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -6)
 
-[node name="Tile110" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile110" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, -4)
 
-[node name="Tile111" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile111" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, -4)
 
-[node name="Tile112" parent="TileGroup" instance=ExtResource("1_sn8an")]
+[node name="Tile112" parent="Bounce_Tiles" instance=ExtResource("4_j5icq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -4)
 
-[node name="Boundaries" type="Node" parent="."]
+[node name="World_Colliders" type="Node" parent="."]
 
-[node name="Floor Boundary" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Floor Boundary"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Floor Boundary2" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 60, 0)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Floor Boundary2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 10, -11)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary2" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.006, 10, 11)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary3" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(-4.5897e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1.05, 4.37114e-08, 1.91069e-15, 11, 10, 0)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary4" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(-4.5897e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1.05, -4.37114e-08, 1.91069e-15, -11, 10, 0)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary 5" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 30, -11)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary 6" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 11)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary 7" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(-4.5897e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1.05, 4.37114e-08, 1.91069e-15, 11, 30, 0)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary 8" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(-4.5897e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1.05, -4.37114e-08, 1.91069e-15, -11, 30, 0)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary 9" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 50, -11)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary 10" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 11)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary 11" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(-4.5897e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1.05, 4.37114e-08, 1.91069e-15, 11, 50, 0)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Wall Boundary 12" type="StaticBody3D" parent="Boundaries" groups=["BonkBoundaries"]]
-transform = Transform3D(-4.5897e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1.05, -4.37114e-08, 1.91069e-15, -11, 50, 0)
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Wall Boundary 12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("WorldBoundaryShape3D_q8y1m")
-
-[node name="Spinning Block" type="AnimatableBody3D" parent="."]
+[node name="Spinning_Block" type="AnimatableBody3D" parent="World_Colliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
 collision_mask = 3
 input_ray_pickable = false
 physics_material_override = SubResource("PhysicsMaterial_npdvm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Spinning Block"]
+[node name="Spinning_Block_Animation_Player" type="AnimationPlayer" parent="World_Colliders/Spinning_Block"]
 libraries = {
 "": SubResource("AnimationLibrary_vsou0")
 }
 autoplay = "Rotation"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Spinning Block"]
+[node name="Splinning_Block_Collider" type="CollisionShape3D" parent="World_Colliders/Spinning_Block"]
 transform = Transform3D(0.853553, -0.146447, 0.5, 0.5, 0.5, -0.707107, -0.146447, 0.853553, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_kw6y6")
 
-[node name="Winbox" parent="." node_paths=PackedStringArray("sheepSpawnArray") instance=ExtResource("4_nc5d2")]
+[node name="Walls" type="Node" parent="World_Colliders"]
+
+[node name="Wall_Boundary_1" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 10, -11)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_2" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.006, 10, 11)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_3" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(-4.5897e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1.05, 4.37114e-08, 1.91069e-15, 11, 10, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_4" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(-4.5897e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1.05, -4.37114e-08, 1.91069e-15, -11, 10, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_5" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 30, -11)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_6" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 11)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_7" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(-4.5897e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1.05, 4.37114e-08, 1.91069e-15, 11, 30, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_8" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(-4.5897e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1.05, -4.37114e-08, 1.91069e-15, -11, 30, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_9" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 50, -11)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_10" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(1.05, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 11)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_11" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(-4.5897e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1.05, 4.37114e-08, 1.91069e-15, 11, 50, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Wall_Boundary_12" type="StaticBody3D" parent="World_Colliders/Walls" groups=["Boundary_Walls"]]
+transform = Transform3D(-4.5897e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1.05, -4.37114e-08, 1.91069e-15, -11, 50, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Walls/Wall_Boundary_12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Floors" type="Node" parent="World_Colliders"]
+
+[node name="Floor_Boundary_1" type="StaticBody3D" parent="World_Colliders/Floors"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Floors/Floor_Boundary_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Floor_Boundary_2" type="StaticBody3D" parent="World_Colliders/Floors"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 60, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Colliders/Floors/Floor_Boundary_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("WorldBoundaryShape3D_q8y1m")
+
+[node name="Sheep_Pen" parent="." node_paths=PackedStringArray("sheepSpawnArray") instance=ExtResource("5_6lqi3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-sheepSpawnArray = [NodePath("Sheep Display/SheepShape"), NodePath("Sheep Display/SheepShape2"), NodePath("Sheep Display/SheepShape3"), NodePath("Sheep Display/SheepShape4"), NodePath("Sheep Display/SheepShape5"), NodePath("Sheep Display/SheepShape6"), NodePath("Sheep Display/SheepShape7"), NodePath("Sheep Display/SheepShape8"), NodePath("Sheep Display/SheepShape9"), NodePath("Sheep Display/SheepShape10")]
+sheepSpawnArray = [NodePath("Sheep_Display/Sheep_Shape_1"), NodePath("Sheep_Display/Sheep_Shape_2"), NodePath("Sheep_Display/Sheep_Shape_3"), NodePath("Sheep_Display/Sheep_Shape_4"), NodePath("Sheep_Display/Sheep_Shape_5"), NodePath("Sheep_Display/Sheep_Shape_6"), NodePath("Sheep_Display/Sheep_Shape_7"), NodePath("Sheep_Display/Sheep_Shape_8"), NodePath("Sheep_Display/Sheep_Shape_9"), NodePath("Sheep_Display/Sheep_Shape_10")]
 
-[node name="Sheep Display" type="Node3D" parent="Winbox"]
+[node name="Sheep_Display" type="Node3D" parent="Sheep_Pen"]
 
-[node name="SheepShape" type="Node3D" parent="Winbox/Sheep Display"]
+[node name="Sheep_Shape_1" type="Node3D" parent="Sheep_Pen/Sheep_Display"]
 transform = Transform3D(-0.687113, 0, -0.726551, 0, 1, 0, 0.726551, 0, -0.687113, -1.689, -0.2, 2.006)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_3u7hr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 libraries = {
 "": SubResource("AnimationLibrary_8g6d5")
 }
 
-[node name="SheepShape2" type="Node3D" parent="Winbox/Sheep Display"]
+[node name="Sheep_Shape_2" type="Node3D" parent="Sheep_Pen/Sheep_Display"]
 transform = Transform3D(0.317503, 0, 0.948257, 0, 1, 0, -0.948257, 0, 0.317503, 0.609359, -0.2, 1.81253)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_3u7hr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 libraries = {
 "": SubResource("AnimationLibrary_t30jr")
 }
 
-[node name="SheepShape3" type="Node3D" parent="Winbox/Sheep Display"]
+[node name="Sheep_Shape_3" type="Node3D" parent="Sheep_Pen/Sheep_Display"]
 transform = Transform3D(0.439406, 0, -0.898288, 0, 1, 0, 0.898288, 0, 0.439406, 0.522785, -0.2, -1.87732)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_3u7hr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 libraries = {
 "": SubResource("AnimationLibrary_vk0g7")
 }
 
-[node name="SheepShape4" type="Node3D" parent="Winbox/Sheep Display"]
+[node name="Sheep_Shape_4" type="Node3D" parent="Sheep_Pen/Sheep_Display"]
 transform = Transform3D(0.871359, 0, 0.490645, 0, 1, 0, -0.490645, 0, 0.871359, -2.06134, -0.2, -0.175209)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_3u7hr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 libraries = {
 "": SubResource("AnimationLibrary_2fr2f")
 }
 
-[node name="SheepShape5" type="Node3D" parent="Winbox/Sheep Display"]
+[node name="Sheep_Shape_5" type="Node3D" parent="Sheep_Pen/Sheep_Display"]
 transform = Transform3D(-0.365787, 0, 0.930699, 0, 1, 0, -0.930699, 0, -0.365787, -1.689, -0.2, -1.88837)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_3u7hr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape5"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 libraries = {
 "": SubResource("AnimationLibrary_o755c")
 }
 
-[node name="SheepShape6" type="Node3D" parent="Winbox/Sheep Display"]
+[node name="Sheep_Shape_6" type="Node3D" parent="Sheep_Pen/Sheep_Display"]
 transform = Transform3D(0.209124, 0, -0.977889, 0, 1, 0, 0.977889, 0, 0.209124, 2.05987, -0.2, -1.17784)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_3u7hr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape6"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 libraries = {
 "": SubResource("AnimationLibrary_vl0k0")
 }
 
-[node name="SheepShape7" type="Node3D" parent="Winbox/Sheep Display"]
+[node name="Sheep_Shape_7" type="Node3D" parent="Sheep_Pen/Sheep_Display"]
 transform = Transform3D(-0.533364, 0, -0.845886, 0, 1, 0, 0.845886, 0, -0.533364, -0.843704, -0.2, -0.238506)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_3u7hr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape7"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 libraries = {
 "": SubResource("AnimationLibrary_rn0b6")
 }
 
-[node name="SheepShape8" type="Node3D" parent="Winbox/Sheep Display"]
+[node name="Sheep_Shape_8" type="Node3D" parent="Sheep_Pen/Sheep_Display"]
 transform = Transform3D(0.781215, 0, 0.624261, 0, 1, 0, -0.624261, 0, 0.781215, 1.99628, -0.2, 1.82312)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_3u7hr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape8"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 libraries = {
 "": SubResource("AnimationLibrary_pnn51")
 }
 
-[node name="SheepShape9" type="Node3D" parent="Winbox/Sheep Display"]
+[node name="Sheep_Shape_9" type="Node3D" parent="Sheep_Pen/Sheep_Display"]
 transform = Transform3D(0.733505, 0, -0.679685, 0, 1, 0, 0.679685, 0, 0.733505, 0.720592, -0.2, -0.394792)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_3u7hr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape9"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 libraries = {
 "": SubResource("AnimationLibrary_g5i82")
 }
 
-[node name="SheepShape10" type="Node3D" parent="Winbox/Sheep Display"]
+[node name="Sheep_Shape_10" type="Node3D" parent="Sheep_Pen/Sheep_Display"]
 transform = Transform3D(0.915361, 0, 0.402635, 0, 1, 0, -0.402635, 0, 0.915361, 0.0109593, -0.2, 0.822009)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_3u7hr")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_p2fij")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Winbox/Sheep Display/SheepShape10"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 libraries = {
 "": SubResource("AnimationLibrary_06iis")
 }
 
-[node name="Floor Colours" type="Node3D" parent="."]
+[node name="Scene_Decor" type="Node" parent="."]
 
-[node name="Floor Texture" type="CSGBox3D" parent="Floor Colours"]
+[node name="Sky_Box" type="WorldEnvironment" parent="Scene_Decor"]
+environment = SubResource("Environment_tpmtl")
+
+[node name="Ground" type="Node3D" parent="Scene_Decor"]
+
+[node name="Ground_Texture_1" type="CSGBox3D" parent="Scene_Decor/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.98, -0.066, 0)
 size = Vector3(300, 1, 625)
 material = SubResource("StandardMaterial3D_pmbmt")
 
-[node name="Floor Texture4" type="CSGBox3D" parent="Floor Colours"]
+[node name="Ground_Texture_2" type="CSGBox3D" parent="Scene_Decor/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161, -0.066, 0)
 size = Vector3(300, 1, 625)
 material = SubResource("StandardMaterial3D_pmbmt")
 
-[node name="Floor Texture2" type="CSGBox3D" parent="Floor Colours"]
+[node name="Ground_Texture_3" type="CSGBox3D" parent="Scene_Decor/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066, 161)
 size = Vector3(22, 1, 300)
 material = SubResource("StandardMaterial3D_pmbmt")
 
-[node name="Floor Texture3" type="CSGBox3D" parent="Floor Colours"]
+[node name="Ground_Texture_4" type="CSGBox3D" parent="Scene_Decor/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066, -161)
 size = Vector3(22, 1, 300)
 material = SubResource("StandardMaterial3D_pmbmt")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3kjif")
+[node name="Directional_Light" type="DirectionalLight3D" parent="Scene_Decor"]
+transform = Transform3D(0.803466, 0.137615, -0.579228, 0.579228, -0.40558, 0.707107, -0.137615, -0.903641, -0.40558, 0, 20, 0)
+shadow_enabled = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_cpmr6")
+[node name="Main_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_u6b72")
 volume_db = 10.0
 autoplay = true
 
-[connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
-[connection signal="timeout" from="GameManager/ResetTimer" to="GameManager" method="_on_reset_timer_timeout"]
+[connection signal="timeout" from="Game_Manager/Game_Reset_Timer" to="Game_Manager" method="_on_game_reset_timer_timeout"]
+[connection signal="timeout" from="Game_Manager/Main_UI/Fade_In_Out_Curtain/Fade_Out_Timer" to="Game_Manager" method="_on_fade_out_timer_timeout"]

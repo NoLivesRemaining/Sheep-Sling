@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d1hulntyej8l0"
-path="res://.godot/imported/SheepSound2.wav-21217004777f799722541531c3176dfe.sample"
+path="res://.godot/imported/Sheep_Bah_SFX_2.wav-5a2ab33a081379427342e6676995f205.sample"
 
 [deps]
 
-source_file="res://Assets/SheepSound2.wav"
-dest_files=["res://.godot/imported/SheepSound2.wav-21217004777f799722541531c3176dfe.sample"]
+source_file="res://Sound/Sheep_Bah_SFX_2.wav"
+dest_files=["res://.godot/imported/Sheep_Bah_SFX_2.wav-5a2ab33a081379427342e6676995f205.sample"]
 
 [params]
 

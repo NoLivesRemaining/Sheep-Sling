@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c685fcvh3eosu"
-path="res://.godot/imported/Window Bonk.wav-0cf0be90b3eeec878ca2fae0c12921a9.sample"
+path="res://.godot/imported/Wall_Bonk_SFX.wav-e87e44589ae62cf3401d5ac98f858e87.sample"
 
 [deps]
 
-source_file="res://Assets/Window Bonk.wav"
-dest_files=["res://.godot/imported/Window Bonk.wav-0cf0be90b3eeec878ca2fae0c12921a9.sample"]
+source_file="res://Sound/Wall_Bonk_SFX.wav"
+dest_files=["res://.godot/imported/Wall_Bonk_SFX.wav-e87e44589ae62cf3401d5ac98f858e87.sample"]
 
 [params]
 

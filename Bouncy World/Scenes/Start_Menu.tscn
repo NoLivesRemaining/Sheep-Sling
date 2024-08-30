@@ -1,0 +1,1966 @@
+[gd_scene load_steps=58 format=3 uid="uid://dryumo3hkvp00"]
+
+[ext_resource type="Script" path="res://Scripts/Start_Menu_Manager.gd" id="1_0s1p5"]
+[ext_resource type="PackedScene" uid="uid://2whw3sw81tcb" path="res://Scenes/Start_Menu_BGM.tscn" id="4_3yinb"]
+
+[sub_resource type="Animation" id="Animation_ixjga"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(7.13713, 1.9248, 2.35544)]
+}
+
+[sub_resource type="Animation" id="Animation_nnm73"]
+resource_name = "camera_pan"
+length = 20.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(7, 2, 2.3), Vector3(7, 2, -2.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5yk8"]
+_data = {
+"RESET": SubResource("Animation_ixjga"),
+"camera_pan": SubResource("Animation_nnm73")
+}
+
+[sub_resource type="Animation" id="Animation_2lplr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_tp1xo"]
+resource_name = "fadein"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_arva5"]
+resource_name = "FadeOut"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxvt5"]
+_data = {
+"RESET": SubResource("Animation_2lplr"),
+"fadeIn": SubResource("Animation_tp1xo"),
+"fadeOut": SubResource("Animation_arva5")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgi5n"]
+albedo_color = Color(0.587027, 0.418059, 0.268655, 0.996078)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxaql"]
+albedo_color = Color(0, 0.0709874, 0.0711856, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5etn4"]
+material = SubResource("StandardMaterial3D_vxaql")
+radius = 0.2
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1162w"]
+material = SubResource("StandardMaterial3D_vxaql")
+radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vg3ut"]
+albedo_color = Color(0.960351, 0.960351, 0.960351, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uyspo"]
+line_spacing = 5.0
+font_size = 100
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5lh13"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nfbrr"]
+font_size = 25
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j17ll"]
+albedo_color = Color(0.105088, 0.317263, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjh7v"]
+albedo_color = Color(0.126657, 0.364294, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efvmf"]
+albedo_color = Color(0, 0.0709874, 0.0711856, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fdsxx"]
+material = SubResource("StandardMaterial3D_efvmf")
+radius = 0.2
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bdnci"]
+material = SubResource("StandardMaterial3D_efvmf")
+radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj14j"]
+albedo_color = Color(0.960351, 0.960351, 0.960351, 1)
+
+[sub_resource type="Animation" id="Animation_urh5q"]
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.689, -0.2, 2.006), Vector3(-1.689, 0.00672507, 2.006)]
+}
+
+[sub_resource type="Animation" id="Animation_rao82"]
+resource_name = "sheep_bounce"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.689, -0.2, 2.006), Vector3(-1.689, -0.0551752, 2.006)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8g6d5"]
+_data = {
+"RESET": SubResource("Animation_urh5q"),
+"sheep_bounce": SubResource("Animation_rao82")
+}
+
+[sub_resource type="Animation" id="Animation_shs88"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.609359, -0.2, 1.81253)]
+}
+
+[sub_resource type="Animation" id="Animation_yjpa7"]
+resource_name = "sheep_bounce"
+length = 1.9
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.609359, -0.2, 1.81253), Vector3(0.609, 0.007, 1.813)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t30jr"]
+_data = {
+"RESET": SubResource("Animation_shs88"),
+"sheep_bounce": SubResource("Animation_yjpa7")
+}
+
+[sub_resource type="Animation" id="Animation_qqpvh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.522785, -0.2, -1.87732)]
+}
+
+[sub_resource type="Animation" id="Animation_jo8an"]
+resource_name = "sheep_bounce"
+length = 1.8
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.522785, -0.2, -1.87732), Vector3(0.523, 0.007, -1.877)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vk0g7"]
+_data = {
+"RESET": SubResource("Animation_qqpvh"),
+"sheep_bounce": SubResource("Animation_jo8an")
+}
+
+[sub_resource type="Animation" id="Animation_yi42h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.06134, -0.2, -0.175209)]
+}
+
+[sub_resource type="Animation" id="Animation_saorf"]
+resource_name = "sheep_bounce"
+length = 1.7
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.06134, -0.2, -0.175209), Vector3(-2.061, 0.007, -0.175)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fr2f"]
+_data = {
+"RESET": SubResource("Animation_yi42h"),
+"sheep_bounce": SubResource("Animation_saorf")
+}
+
+[sub_resource type="Animation" id="Animation_soq0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.689, -0.2, -1.88837)]
+}
+
+[sub_resource type="Animation" id="Animation_66f40"]
+resource_name = "sheep_bounce"
+length = 1.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.689, -0.2, -1.88837), Vector3(-1.689, 0.007, -1.888)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o755c"]
+_data = {
+"RESET": SubResource("Animation_soq0q"),
+"sheep_bounce": SubResource("Animation_66f40")
+}
+
+[sub_resource type="Animation" id="Animation_pvvaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.05987, -0.2, -1.17784)]
+}
+
+[sub_resource type="Animation" id="Animation_wbdmj"]
+resource_name = "sheep_bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.05987, -0.2, -1.17784), Vector3(2.06, 0.007, -1.178)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vl0k0"]
+_data = {
+"RESET": SubResource("Animation_pvvaa"),
+"sheep_bounce": SubResource("Animation_wbdmj")
+}
+
+[sub_resource type="Animation" id="Animation_fqf2a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.843704, -0.2, -0.238506)]
+}
+
+[sub_resource type="Animation" id="Animation_sowfb"]
+resource_name = "sheep_bounce"
+length = 1.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.843704, -0.2, -0.238506), Vector3(-0.844, 0.007, -0.239)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rn0b6"]
+_data = {
+"RESET": SubResource("Animation_fqf2a"),
+"sheep_bounce": SubResource("Animation_sowfb")
+}
+
+[sub_resource type="Animation" id="Animation_vghl6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.99628, -0.2, 1.82312)]
+}
+
+[sub_resource type="Animation" id="Animation_0nj2q"]
+resource_name = "sheep_bounce"
+length = 1.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.99628, -0.2, 1.82312), Vector3(1.996, 0.007, 1.823)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnn51"]
+_data = {
+"RESET": SubResource("Animation_vghl6"),
+"sheep_bounce": SubResource("Animation_0nj2q")
+}
+
+[sub_resource type="Animation" id="Animation_tb2fi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.720592, -0.2, -0.394792)]
+}
+
+[sub_resource type="Animation" id="Animation_1pyen"]
+resource_name = "sheep_bounce"
+length = 1.2
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.720592, -0.2, -0.394792), Vector3(0.721, 0.007, -0.395)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5i82"]
+_data = {
+"RESET": SubResource("Animation_tb2fi"),
+"sheep_bounce": SubResource("Animation_1pyen")
+}
+
+[sub_resource type="Animation" id="Animation_wpy3e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0109593, -0.2, 0.822009)]
+}
+
+[sub_resource type="Animation" id="Animation_wyomm"]
+resource_name = "sheep_bounce"
+length = 1.1
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.0109593, -0.2, 0.822009), Vector3(0.011, 0.007, 0.822)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x7iak"]
+_data = {
+"RESET": SubResource("Animation_wpy3e"),
+"sheep_bounce": SubResource("Animation_wyomm")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovyow"]
+albedo_color = Color(0.587027, 0.418059, 0.268655, 0.996078)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a1mry"]
+
+[sub_resource type="Sky" id="Sky_4fb10"]
+sky_material = SubResource("ProceduralSkyMaterial_a1mry")
+
+[sub_resource type="Environment" id="Environment_o6u0u"]
+background_mode = 2
+sky = SubResource("Sky_4fb10")
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+
+[node name="Start_Menu" type="Node3D"]
+script = ExtResource("1_0s1p5")
+
+[node name="Main_Camera" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 7.13713, 1.9248, 2.35544)
+fov = 55.0
+
+[node name="Main_Camera_Animation_Player" type="AnimationPlayer" parent="Main_Camera"]
+libraries = {
+"": SubResource("AnimationLibrary_b5yk8")
+}
+autoplay = "camera_pan"
+
+[node name="Menu_Canvas" type="CanvasLayer" parent="."]
+
+[node name="Fade_In_Out_Curtain" type="ColorRect" parent="Menu_Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0)
+
+[node name="Fade_In_Out_Animation_Player" type="AnimationPlayer" parent="Menu_Canvas/Fade_In_Out_Curtain"]
+libraries = {
+"": SubResource("AnimationLibrary_yxvt5")
+}
+
+[node name="Viewports" type="Node" parent="Menu_Canvas"]
+
+[node name="Fence_Viewport" type="SubViewportContainer" parent="Menu_Canvas/Viewports"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -424.0
+offset_top = -201.0
+offset_right = 1176.0
+offset_bottom = 1299.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Fence_SubViewport" type="SubViewport" parent="Menu_Canvas/Viewports/Fence_Viewport"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1500, 1500)
+render_target_update_mode = 4
+
+[node name="Viewport_Fencing" type="Node3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 13.1441, -22.1943, 1.31985)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.2, 3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.2, 3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.2, -3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport/Viewport_Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.2, -3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_dgi5n")
+
+[node name="Fence_Camera" type="Camera3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 12.3871, -16.3976, 5.12465)
+
+[node name="Sheep_1_Viewport" type="SubViewportContainer" parent="Menu_Canvas/Viewports"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -427.0
+offset_top = -20.0
+offset_right = 1073.0
+offset_bottom = 1480.0
+grow_horizontal = 2
+scale = Vector2(0.2, 0.2)
+
+[node name="Sheep_1_SubViewport" type="SubViewport" parent="Menu_Canvas/Viewports/Sheep_1_Viewport"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1500, 1500)
+render_target_update_mode = 4
+
+[node name="Viewport_1_Sheep" type="Node3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport"]
+transform = Transform3D(0.375976, -0.910757, 0.170772, -0.587484, -0.376806, -0.716157, 0.716593, 0.168932, -0.676725, -10.894, -15.6379, 0.650633)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_5etn4")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_1162w")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_1162w")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_1162w")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_1162w")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport/Viewport_1_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="Sheep_1_Camera" type="Camera3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, -10.6382, -14.1425, 1.9588)
+
+[node name="Sheep_2_Viewport" type="SubViewportContainer" parent="Menu_Canvas/Viewports"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 164.0
+offset_top = -107.0
+offset_right = 1664.0
+offset_bottom = 1393.0
+grow_horizontal = 2
+scale = Vector2(0.2, 0.2)
+
+[node name="Sheep_2_SubViewport" type="SubViewport" parent="Menu_Canvas/Viewports/Sheep_2_Viewport"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1500, 1500)
+render_target_update_mode = 4
+
+[node name="Viewport_2_Sheep" type="Node3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport"]
+transform = Transform3D(0.799091, 0.457284, 0.390315, -0.599237, 0.553228, 0.578665, 0.0486804, -0.696296, 0.716102, -0.255791, -15.6379, 1.30563)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_5etn4")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_1162w")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_1162w")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_1162w")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_1162w")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport/Viewport_2_Sheep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_vg3ut")
+
+[node name="Sheep_2_Camera" type="Camera3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, 0, -14.1425, 2.6138)
+
+[node name="Game_Name_Text" type="Label" parent="Menu_Canvas"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -276.0
+offset_top = 45.0
+offset_right = 276.0
+offset_bottom = 182.0
+grow_horizontal = 2
+text = "Sheep Sling"
+label_settings = SubResource("LabelSettings_uyspo")
+horizontal_alignment = 1
+
+[node name="Play_Button" type="Button" parent="Menu_Canvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -62.5
+offset_right = 150.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Play_Button_Text" type="Label" parent="Menu_Canvas/Play_Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = -34.5
+offset_right = 80.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+label_settings = SubResource("LabelSettings_5lh13")
+horizontal_alignment = 1
+
+[node name="Play_Button_Timer" type="Timer" parent="Menu_Canvas/Play_Button"]
+wait_time = 0.5
+
+[node name="Credits_Text" type="Label" parent="Menu_Canvas"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -98.0
+offset_right = 586.0
+offset_bottom = -25.0
+grow_vertical = 0
+text = "SFX from Freesound.org
+Music by Ari Castellano"
+label_settings = SubResource("LabelSettings_nfbrr")
+vertical_alignment = 2
+
+[node name="Start_Menu_BGM" parent="." instance=ExtResource("4_3yinb")]
+position = Vector2(247, 341)
+volume_db = 5.0
+
+[node name="Scene_Dressing" type="Node" parent="."]
+
+[node name="Outer_Ground" type="Node3D" parent="Scene_Dressing"]
+
+[node name="Floor Texture" type="CSGBox3D" parent="Scene_Dressing/Outer_Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.98, -0.0655275, 0.0280256)
+size = Vector3(300, 1, 425)
+material = SubResource("StandardMaterial3D_j17ll")
+
+[node name="Floor Texture4" type="CSGBox3D" parent="Scene_Dressing/Outer_Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.952, -0.0655275, 0.0280256)
+size = Vector3(78, 1, 22)
+material = SubResource("StandardMaterial3D_j17ll")
+
+[node name="Floor Texture2" type="CSGBox3D" parent="Scene_Dressing/Outer_Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0204, -0.0655275, 111.028)
+size = Vector3(100, 1, 200)
+material = SubResource("StandardMaterial3D_j17ll")
+
+[node name="Floor Texture3" type="CSGBox3D" parent="Scene_Dressing/Outer_Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0204, -0.0655275, -110.972)
+size = Vector3(100, 1, 200)
+material = SubResource("StandardMaterial3D_j17ll")
+
+[node name="Raised_Ground" type="CSGBox3D" parent="Scene_Dressing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(22, 2, 22)
+material = SubResource("StandardMaterial3D_mjh7v")
+
+[node name="Sheep_Group" type="Node3D" parent="Scene_Dressing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Sheep_1" type="Node3D" parent="Scene_Dressing/Sheep_Group"]
+transform = Transform3D(-0.687113, 0, -0.726551, 0, 1, 0, 0.726551, 0, -0.687113, -1.689, -0.2, 2.006)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_fdsxx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="Sheep_1_Animation_Player" type="AnimationPlayer" parent="Scene_Dressing/Sheep_Group/Sheep_1"]
+libraries = {
+"": SubResource("AnimationLibrary_8g6d5")
+}
+autoplay = "sheep_bounce"
+
+[node name="Sheep_2" type="Node3D" parent="Scene_Dressing/Sheep_Group"]
+transform = Transform3D(0.317503, 0, 0.948257, 0, 1, 0, -0.948257, 0, 0.317503, 0.609359, -0.2, 1.81253)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_fdsxx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="Sheep_2_Animation_Player" type="AnimationPlayer" parent="Scene_Dressing/Sheep_Group/Sheep_2"]
+libraries = {
+"": SubResource("AnimationLibrary_t30jr")
+}
+autoplay = "sheep_bounce"
+
+[node name="Sheep_3" type="Node3D" parent="Scene_Dressing/Sheep_Group"]
+transform = Transform3D(0.439406, 0, -0.898288, 0, 1, 0, 0.898288, 0, 0.439406, 0.522785, -0.2, -1.87732)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_fdsxx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="Sheep_3_Animation_Player" type="AnimationPlayer" parent="Scene_Dressing/Sheep_Group/Sheep_3"]
+libraries = {
+"": SubResource("AnimationLibrary_vk0g7")
+}
+autoplay = "sheep_bounce"
+
+[node name="Sheep_4" type="Node3D" parent="Scene_Dressing/Sheep_Group"]
+transform = Transform3D(0.871359, 0, 0.490645, 0, 1, 0, -0.490645, 0, 0.871359, -2.06134, -0.2, -0.175209)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_fdsxx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="Sheep_4_Animation_Player" type="AnimationPlayer" parent="Scene_Dressing/Sheep_Group/Sheep_4"]
+libraries = {
+"": SubResource("AnimationLibrary_2fr2f")
+}
+autoplay = "sheep_bounce"
+
+[node name="Sheep_5" type="Node3D" parent="Scene_Dressing/Sheep_Group"]
+transform = Transform3D(-0.365787, 0, 0.930699, 0, 1, 0, -0.930699, 0, -0.365787, -1.689, -0.2, -1.88837)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_fdsxx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="Sheep_5_Animation_Player" type="AnimationPlayer" parent="Scene_Dressing/Sheep_Group/Sheep_5"]
+libraries = {
+"": SubResource("AnimationLibrary_o755c")
+}
+autoplay = "sheep_bounce"
+
+[node name="Sheep_6" type="Node3D" parent="Scene_Dressing/Sheep_Group"]
+transform = Transform3D(0.209124, 0, -0.977889, 0, 1, 0, 0.977889, 0, 0.209124, 2.05987, -0.2, -1.17784)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_fdsxx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="Sheep_6_Animation_Player" type="AnimationPlayer" parent="Scene_Dressing/Sheep_Group/Sheep_6"]
+libraries = {
+"": SubResource("AnimationLibrary_vl0k0")
+}
+autoplay = "sheep_bounce"
+
+[node name="Sheep_7" type="Node3D" parent="Scene_Dressing/Sheep_Group"]
+transform = Transform3D(-0.533364, 0, -0.845886, 0, 1, 0, 0.845886, 0, -0.533364, -0.843704, -0.2, -0.238506)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_fdsxx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="Sheep_7_Animation_Player" type="AnimationPlayer" parent="Scene_Dressing/Sheep_Group/Sheep_7"]
+libraries = {
+"": SubResource("AnimationLibrary_rn0b6")
+}
+autoplay = "sheep_bounce"
+
+[node name="Sheep_8" type="Node3D" parent="Scene_Dressing/Sheep_Group"]
+transform = Transform3D(0.781215, 0, 0.624261, 0, 1, 0, -0.624261, 0, 0.781215, 1.99628, -0.2, 1.82312)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_fdsxx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="Sheep_8_Animation_Player" type="AnimationPlayer" parent="Scene_Dressing/Sheep_Group/Sheep_8"]
+libraries = {
+"": SubResource("AnimationLibrary_pnn51")
+}
+autoplay = "sheep_bounce"
+
+[node name="Sheep_9" type="Node3D" parent="Scene_Dressing/Sheep_Group"]
+transform = Transform3D(0.733505, 0, -0.679685, 0, 1, 0, 0.679685, 0, 0.733505, 0.720592, -0.2, -0.394792)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_fdsxx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="Sheep_9_Animation_Player" type="AnimationPlayer" parent="Scene_Dressing/Sheep_Group/Sheep_9"]
+libraries = {
+"": SubResource("AnimationLibrary_g5i82")
+}
+autoplay = "sheep_bounce"
+
+[node name="Sheep_10" type="Node3D" parent="Scene_Dressing/Sheep_Group"]
+transform = Transform3D(0.915361, 0, 0.402635, 0, 1, 0, -0.402635, 0, 0.915361, 0.0109593, -0.2, 0.822009)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_fdsxx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
+mesh = SubResource("CapsuleMesh_bdnci")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
+radius = 0.3
+material = SubResource("StandardMaterial3D_dj14j")
+
+[node name="Sheep_10_Animation_Player" type="AnimationPlayer" parent="Scene_Dressing/Sheep_Group/Sheep_10"]
+libraries = {
+"": SubResource("AnimationLibrary_x7iak")
+}
+autoplay = "sheep_bounce"
+
+[node name="Fencing" type="Node3D" parent="Scene_Dressing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+radius = 0.1
+height = 1.0
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.2, 0)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.2, 3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.2, 3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.2, -3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Scene_Dressing/Fencing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.2, -3)
+size = Vector3(0.075, 0.2, 6)
+material = SubResource("StandardMaterial3D_ovyow")
+
+[node name="Sky_Box" type="WorldEnvironment" parent="Scene_Dressing"]
+environment = SubResource("Environment_o6u0u")
+
+[node name="Start_Menu_Directional_Light" type="DirectionalLight3D" parent="Scene_Dressing"]
+transform = Transform3D(0.803466, 0.137615, -0.579228, 0.579228, -0.40558, 0.707107, -0.137615, -0.903641, -0.40558, 0, 20, 0)
+shadow_enabled = true
+
+[connection signal="pressed" from="Menu_Canvas/Play_Button" to="." method="_on_play_button_pressed"]
+[connection signal="timeout" from="Menu_Canvas/Play_Button/Play_Button_Timer" to="." method="_on_play_button_timer_timeout"]

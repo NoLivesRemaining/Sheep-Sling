@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Sheep Sling"
-run/main_scene="res://Scenes/menu.tscn"
+run/main_scene="res://Scenes/Start_Menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
 
 [input]
 

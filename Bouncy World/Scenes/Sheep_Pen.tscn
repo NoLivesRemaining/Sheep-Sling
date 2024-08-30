@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ditao2fywc1c0"]
 
-[ext_resource type="Script" path="res://Scripts/winbox.gd" id="1_lnbra"]
-[ext_resource type="AudioStream" uid="uid://dt83hqo4w4f58" path="res://Assets/SheepCollection.mp3" id="2_5ac4n"]
+[ext_resource type="Script" path="res://Scripts/Sheep_Pen_Controller.gd" id="1_lnbra"]
+[ext_resource type="AudioStream" uid="uid://dt83hqo4w4f58" path="res://Sound/Sheep_Collect_SFX.mp3" id="2_5ac4n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_um7wy"]
 size = Vector3(5.8, 1, 5.8)
@@ -21,18 +21,19 @@ streams_count = 1
 stream_0/stream = ExtResource("2_5ac4n")
 stream_0/weight = 1.0
 
-[node name="Winbox" type="Node3D"]
+[node name="Sheep_Pen" type="Node3D" node_paths=PackedStringArray("sheepSpawnArray")]
 top_level = true
 script = ExtResource("1_lnbra")
+sheepSpawnArray = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
 
-[node name="WinArea" type="Area3D" parent="."]
+[node name="Collection_Hitbox" type="Area3D" parent="."]
 collision_mask = 2
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WinArea"]
+[node name="Collection_Hitbox_Collider" type="CollisionShape3D" parent="Collection_Hitbox"]
 shape = SubResource("BoxShape3D_um7wy")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="WinArea/CollisionShape3D"]
+[node name="Collection_Hitbox_Ground" type="CSGBox3D" parent="Collection_Hitbox/Collection_Hitbox_Collider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 size = Vector3(6, 1, 6)
 material = SubResource("StandardMaterial3D_e15jx")
@@ -223,29 +224,29 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.2
 size = Vector3(0.075, 0.2, 6)
 material = SubResource("StandardMaterial3D_b8mrv")
 
-[node name="Colliders" type="Node3D" parent="."]
+[node name="Fencing_Colliders" type="Node3D" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Colliders"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Fencing_Colliders"]
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fencing_Colliders/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 shape = SubResource("BoxShape3D_vttha")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Fencing_Colliders/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 shape = SubResource("BoxShape3D_vttha")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Fencing_Colliders/StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -3)
 shape = SubResource("BoxShape3D_vttha")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Colliders/StaticBody3D"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Fencing_Colliders/StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 3)
 shape = SubResource("BoxShape3D_vttha")
 
-[node name="CollectSound" type="AudioStreamPlayer3D" parent="."]
+[node name="Collection_SFX" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_6jhsd")
 volume_db = 10.0
 
-[connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
+[connection signal="body_entered" from="Collection_Hitbox" to="." method="_on_collection_hitbox_body_entered"]

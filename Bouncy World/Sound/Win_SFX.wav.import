@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d1p6l7cs78w6h"
-path="res://.godot/imported/LastSheep.wav-35d1f12abd6a3c519409dd19e6398a39.sample"
+path="res://.godot/imported/Win_SFX.wav-125c72a79cef3574e820737d8901368d.sample"
 
 [deps]
 
-source_file="res://Assets/LastSheep.wav"
-dest_files=["res://.godot/imported/LastSheep.wav-35d1f12abd6a3c519409dd19e6398a39.sample"]
+source_file="res://Sound/Win_SFX.wav"
+dest_files=["res://.godot/imported/Win_SFX.wav-125c72a79cef3574e820737d8901368d.sample"]
 
 [params]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://bd61do5fi5nl5"]
 
-[ext_resource type="Script" path="res://Scripts/SheepControl.gd" id="1_c6xbk"]
-[ext_resource type="AudioStream" uid="uid://crk00vfjqnr0m" path="res://Assets/SheepSound1.wav" id="2_lsj8w"]
-[ext_resource type="AudioStream" uid="uid://d1hulntyej8l0" path="res://Assets/SheepSound2.wav" id="3_egx7p"]
-[ext_resource type="AudioStream" uid="uid://b384wbk6tp7hk" path="res://Assets/SheepSound3.mp3" id="4_u7p7k"]
-[ext_resource type="AudioStream" uid="uid://c685fcvh3eosu" path="res://Assets/Window Bonk.wav" id="5_o57hb"]
+[ext_resource type="Script" path="res://Scripts/Sheep_Behaviour.gd" id="1_06ywm"]
+[ext_resource type="AudioStream" uid="uid://crk00vfjqnr0m" path="res://Sound/Sheep_Bah_SFX_1.wav" id="2_bc7ih"]
+[ext_resource type="AudioStream" uid="uid://d1hulntyej8l0" path="res://Sound/Sheep_Bah_SFX_2.wav" id="3_c53yu"]
+[ext_resource type="AudioStream" uid="uid://b384wbk6tp7hk" path="res://Sound/Sheep_Bah_SFX_3.mp3" id="4_xuryl"]
+[ext_resource type="AudioStream" uid="uid://c685fcvh3eosu" path="res://Sound/Wall_Bonk_SFX.wav" id="5_r6csh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y1cjb"]
 friction = 0.9
@@ -34,21 +34,21 @@ playback_mode = 1
 random_pitch = 2.0
 random_volume_offset_db = 1.0
 streams_count = 3
-stream_0/stream = ExtResource("2_lsj8w")
+stream_0/stream = ExtResource("2_bc7ih")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("3_egx7p")
+stream_1/stream = ExtResource("3_c53yu")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("4_u7p7k")
+stream_2/stream = ExtResource("4_xuryl")
 stream_2/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_08arx"]
 random_pitch = 2.0
 random_volume_offset_db = 1.0
 streams_count = 1
-stream_0/stream = ExtResource("5_o57hb")
+stream_0/stream = ExtResource("5_r6csh")
 stream_0/weight = 1.0
 
-[node name="Sheep" type="RigidBody3D" groups=["Sheep"]]
+[node name="Sheep_Prefab" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 3
 input_ray_pickable = false
@@ -56,79 +56,79 @@ physics_material_override = SubResource("PhysicsMaterial_y1cjb")
 gravity_scale = 0.9
 max_contacts_reported = 5
 contact_monitor = true
-script = ExtResource("1_c6xbk")
+script = ExtResource("1_06ywm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Sheep_Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.1, 0)
 shape = SubResource("CapsuleShape3D_b81wx")
 
-[node name="SheepShape" type="Node3D" parent="."]
+[node name="Sheep_Shape" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SheepShape"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sheep_Shape"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
 mesh = SubResource("CapsuleMesh_rkh5m")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="SheepShape"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_00lhq")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="SheepShape"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, 0.2)
 mesh = SubResource("CapsuleMesh_00lhq")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="SheepShape"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_00lhq")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="SheepShape"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.07, -0.2)
 mesh = SubResource("CapsuleMesh_00lhq")
 skeleton = NodePath("../..")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="SheepShape"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_pq3xs")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="SheepShape"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_pq3xs")
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="SheepShape"]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, 0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_pq3xs")
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="SheepShape"]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.125, -0.08)
 radius = 0.3
 material = SubResource("StandardMaterial3D_pq3xs")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="SheepShape"]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.36, 0.045)
 radius = 0.3
 material = SubResource("StandardMaterial3D_pq3xs")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="SheepShape"]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, 0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_pq3xs")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="SheepShape"]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Sheep_Shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_pq3xs")
 
-[node name="SheepSound" type="AudioStreamPlayer3D" parent="."]
+[node name="Sheep_Bah_SFX" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_eyw53")
 volume_db = -7.0
 
-[node name="BonkSound" type="AudioStreamPlayer3D" parent="."]
+[node name="Wall_Bonk_SFX" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_08arx")
 volume_db = 5.0
 
