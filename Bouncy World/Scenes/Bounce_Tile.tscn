@@ -1,11 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtu0r5vfh2cgj"]
+[gd_scene load_steps=6 format=3 uid="uid://dtu0r5vfh2cgj"]
 
 [ext_resource type="Script" path="res://Scripts/Bounce_Tile_Controller.gd" id="1_4w16f"]
+[ext_resource type="Shader" path="res://Shaders/Tile_Shader.gdshader" id="2_e8giw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ek33x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cg4qp"]
+render_priority = 1
+shader = ExtResource("2_e8giw")
+shader_parameter/albedo = Color(0.12549, 0.364706, 0, 1)
+shader_parameter/wire_color = Color(0, 0, 0, 1)
+shader_parameter/wire_width = 0.1
+shader_parameter/wire_smoothness = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dmkm"]
+next_pass = SubResource("ShaderMaterial_cg4qp")
 albedo_color = Color(0.126657, 0.364294, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m2ttd"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0dmb"]
 size = Vector3(2, 2, 2)
 
 [node name="Bounce_Tile" type="Node3D"]
@@ -13,14 +23,14 @@ script = ExtResource("1_4w16f")
 
 [node name="Bounce_Tile_Box" type="CSGBox3D" parent="."]
 size = Vector3(2, 2, 2)
-material = SubResource("StandardMaterial3D_ek33x")
+material = SubResource("StandardMaterial3D_3dmkm")
 
 [node name="Bounce_Tile_Click_Area" type="Area3D" parent="."]
 collision_mask = 2
 
 [node name="Bounce_Tile_Collider_Shape" type="CollisionShape3D" parent="Bounce_Tile_Click_Area"]
-shape = SubResource("BoxShape3D_m2ttd")
+shape = SubResource("BoxShape3D_y0dmb")
 
 [connection signal="body_entered" from="Bounce_Tile_Click_Area" to="." method="_on_bounce_tile_click_area_body_entered"]
-[connection signal="input_event" from="Bounce_Tile_Click_Area" to="." method="_on_area_3d_input_event"]
 [connection signal="input_event" from="Bounce_Tile_Click_Area" to="." method="_on_bounce_tile_click_area_input_event"]
+[connection signal="input_event" from="Bounce_Tile_Click_Area" to="." method="_on_area_3d_input_event"]

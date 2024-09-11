@@ -24,7 +24,7 @@ stream_0/weight = 1.0
 [node name="Sheep_Pen" type="Node3D" node_paths=PackedStringArray("sheepSpawnArray")]
 top_level = true
 script = ExtResource("1_lnbra")
-sheepSpawnArray = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+sheepSpawnArray = [null, null, null, null, null, null, null, null, null, null]
 
 [node name="Collection_Hitbox" type="Area3D" parent="."]
 collision_mask = 2

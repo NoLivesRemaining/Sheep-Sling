@@ -7,11 +7,11 @@ extends Node3D
 
 var sheepTracker: int = 0
 
-func _ready():
+func _ready() -> void:
 	for sheep in sheepSpawnArray.size():
 		sheepSpawnArray[sheep].set_visible(false)
 
-func _on_collection_hitbox_body_entered(body):
+func _on_collection_hitbox_body_entered(body: RigidBody3D) -> void:
 	gameManager.add_Point()
 	collectionPlayer.play()
 	sheepSpawnArray[sheepTracker].set_visible(true)

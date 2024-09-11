@@ -950,7 +950,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 text = "Thats all of 'em! 
-Good work!"
+Good work!
+
+Restarting soon!"
 label_settings = SubResource("LabelSettings_txbkg")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1003,7 +1005,7 @@ size = Vector2i(800, 800)
 render_target_update_mode = 4
 
 [node name="Sheep_Viewport_Sheep" type="Node3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport"]
-transform = Transform3D(0.736682, 0.186361, -0.650054, 0.277265, 0.793523, 0.541706, 0.616786, -0.579301, 0.532903, 189.669, -8.44177, 64.9981)
+transform = Transform3D(0.736682, 0.186361, -0.650054, 0.277265, 0.793523, 0.541706, 0.616786, -0.579301, 0.532903, 721.097, -8.44177, 64.9981)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Sheep"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.25, 0)
@@ -1066,10 +1068,10 @@ radius = 0.3
 material = SubResource("StandardMaterial3D_wifm6")
 
 [node name="Sheep_Viewport_Camera" type="Camera3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, 189.925, -6.94637, 66.3063)
+transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, 721.353, -6.94637, 66.3063)
 
 [node name="Sheep_Viewport_Fencing" type="Node3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport"]
-transform = Transform3D(0.8, 0, 0, 0, 0.597311, 0.532184, 0, -0.532184, 0.597311, 189.761, -9.61465, 63.6891)
+transform = Transform3D(0.8, 0, 0, 0, 0.597311, 0.532184, 0, -0.532184, 0.597311, 721.189, -9.61465, 63.6891)
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport/Sheep_Viewport_Fencing"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0.811814, -1.90735e-06, 3)
@@ -2304,7 +2306,7 @@ size = Vector3(22, 1, 300)
 material = SubResource("StandardMaterial3D_pmbmt")
 
 [node name="Directional_Light" type="DirectionalLight3D" parent="Scene_Decor"]
-transform = Transform3D(0.803466, 0.137615, -0.579228, 0.579228, -0.40558, 0.707107, -0.137615, -0.903641, -0.40558, 0, 20, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 shadow_enabled = true
 
 [node name="Main_BGM" type="AudioStreamPlayer" parent="."]

@@ -8,22 +8,22 @@ var currentRotation: float
 
 const minimumVelocity: float = 0.025
 
-func _ready():
+func _ready() -> void:
 	startingRotation = rotation
 
-func _process(delta):
+func _process(delta : float) -> void:
 	if(self.rotation != startingRotation and linear_velocity.length() < minimumVelocity):
 		reset_Rotation()
 
 # Will reset the Sheeps rotation with a tween and stand them up when they slow to a certain movement
-func reset_Rotation():
+func reset_Rotation() -> void:
 	currentRotation = rotation.y
 	var newRotation = Vector3(startingRotation.x, currentRotation, startingRotation.z)
 	var rotationTween = create_tween()
 	rotationTween.tween_property(self, "rotation", newRotation, 0.5)
 
 
-func _on_body_entered(body):
+func _on_body_entered(body) -> void:
 # Plays a Bonk sound effect whenever the sheep impacts any of the invisible boundary walls
 	if(body.is_in_group("Boundary_Walls") and linear_velocity.length() > minimumVelocity * 100):
 		self.bonkSFX.play()

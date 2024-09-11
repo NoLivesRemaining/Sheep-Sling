@@ -21,7 +21,7 @@ func _on_bounce_tile_click_area_input_event(camera: Node, event: InputEvent, pos
 			prevMousePosition = get_viewport().get_mouse_position()
 
 
-func _input(event):
+func _input(event) -> void:
 	if event is InputEventMouseButton:
 # Tracks the players held mouse click to drag the Bounce Tile up and down regardless of where they move the mouse
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == false and self.isPickedUp == true:
@@ -34,10 +34,10 @@ func _input(event):
 			position.y = startingPosition
 			targetLocation = startingPosition
 
-func _ready():
+func _ready() -> void:
 	startingPosition = position.y
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if(isPickedUp):
 # Raises and lowers the Bounce Tile with the players mouse movement
 		nextMousePosition = get_viewport().get_mouse_position()
@@ -63,7 +63,7 @@ func _physics_process(delta):
 				position.y = move_toward(position.y, targetLocation, speed)
 
 # When a Bounce Tile impacts a sheep, it will apply a force to bounce them upwards in a direction
-func _on_bounce_tile_click_area_body_entered(sheep):
+func _on_bounce_tile_click_area_body_entered(sheep : RigidBody3D) -> void:
 	if(speed):
 		var distance = sheep.position - position
 		var magnitude = distance.length()

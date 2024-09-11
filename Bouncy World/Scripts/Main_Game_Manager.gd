@@ -19,24 +19,24 @@ var sheepScore: int = 0
 var animationArray: Array = ["View_Position_1", "View_Position_2", "View_Position_3", "View_Position_4"]
 var animationNumber: int = 0
 
-func _ready():
-	sheepCount = sheepRandomiser.randi_range(6, 10)
+func _ready() -> void:
+	sheepCount = sheepRandomiser.randi_range(10, 15)
 	sheepCountUI.text = str(sheepScore) + "/" + str(sheepCount)
 
-func add_Point():
+func add_Point() -> void:
 	sheepScore += 1
 	sheepCountUI.text = str(sheepScore) + "/" + str(sheepCount)
 	check_Score()
 
 # Called by Sheep Spawner
-func spawn_Sheep():
+func spawn_Sheep() -> void:
 	var newSheep = sheep.instantiate()
 	add_child(newSheep)
 	newSheep.global_position = spawnPoint.global_position
 	
 
 # Allows the player to shift the camera around the scene
-func _input(event):
+func _input(event) -> void:
 	if event.is_action_pressed("Right") and !cameraAnimator.is_playing():
 		animationNumber += 1
 		if animationNumber == 4:
@@ -44,7 +44,7 @@ func _input(event):
 		cameraAnimator.play(animationArray[animationNumber])
 
 # If win condition is met, will begin the game end and reset sequence
-func check_Score():
+func check_Score() -> void:
 	if(sheepScore == sheepCount):
 		check_Animation()
 		textAnimator.play("TextFadeIn")
@@ -54,8 +54,8 @@ func check_Score():
 		fadeOutTimer.start()
 
 # Plays a different win animation based on the current camera position to avoid jittering
-func check_Animation():
-	match cameraAnimator:
+func check_Animation() -> void:
+	match animationNumber:
 		0:
 			cameraAnimator.play("Win_Position_1")
 		1:
@@ -65,11 +65,11 @@ func check_Animation():
 		3:
 			cameraAnimator.play("Win_Position_4")
 
-func _on_fade_out_timer_timeout():
+func _on_fade_out_timer_timeout() -> void:
 	fadeOutAnimator.play("fadeIn")
 	resetTimer.start()
 
-func _on_game_reset_timer_timeout():
+func _on_game_reset_timer_timeout() -> void:
 	get_tree().reload_current_scene()
 
 

@@ -8,7 +8,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y1cjb"]
 friction = 0.9
-bounce = 0.6
+bounce = 0.75
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b81wx"]
 height = 1.1
@@ -53,7 +53,7 @@ collision_layer = 2
 collision_mask = 3
 input_ray_pickable = false
 physics_material_override = SubResource("PhysicsMaterial_y1cjb")
-gravity_scale = 0.9
+gravity_scale = 0.8
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_06ywm")
