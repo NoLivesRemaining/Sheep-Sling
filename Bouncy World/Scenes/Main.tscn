@@ -887,6 +887,11 @@ _data = {
 }
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fcfx2"]
+sky_top_color = Color(0.0822449, 0.0823026, 0.0859375, 1)
+sky_horizon_color = Color(0.0134972, 0.0125885, 0.128906, 1)
+ground_bottom_color = Color(0.0585938, 0.0585938, 0.0585938, 1)
+ground_horizon_color = Color(0.0390625, 0.0390625, 0.0390625, 1)
+sun_angle_max = 0.0
 
 [sub_resource type="Sky" id="Sky_tdx17"]
 sky_material = SubResource("ProceduralSkyMaterial_fcfx2")
@@ -965,7 +970,7 @@ libraries = {
 [node name="Sheep_Count_Text" type="Label" parent="Game_Manager/Main_UI"]
 offset_left = 24.0
 offset_top = 3.0
-offset_right = 239.0
+offset_right = 270.0
 offset_bottom = 89.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -1661,6 +1666,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.19
+omni_range = 3.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_1"]
 libraries = {
 "": SubResource("AnimationLibrary_8g6d5")
@@ -1728,6 +1740,13 @@ material = SubResource("StandardMaterial3D_xdue1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.19
+omni_range = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
 libraries = {
@@ -1797,6 +1816,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.19
+omni_range = 3.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
 libraries = {
 "": SubResource("AnimationLibrary_vk0g7")
@@ -1864,6 +1890,13 @@ material = SubResource("StandardMaterial3D_xdue1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.19
+omni_range = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
 libraries = {
@@ -1933,6 +1966,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.19
+omni_range = 3.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_5"]
 libraries = {
 "": SubResource("AnimationLibrary_o755c")
@@ -2000,6 +2040,13 @@ material = SubResource("StandardMaterial3D_xdue1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.19
+omni_range = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_6"]
 libraries = {
@@ -2069,6 +2116,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.19
+omni_range = 3.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_7"]
 libraries = {
 "": SubResource("AnimationLibrary_rn0b6")
@@ -2136,6 +2190,13 @@ material = SubResource("StandardMaterial3D_xdue1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
+
+[node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.19
+omni_range = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_8"]
 libraries = {
@@ -2205,6 +2266,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.19
+omni_range = 3.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_9"]
 libraries = {
 "": SubResource("AnimationLibrary_g5i82")
@@ -2273,6 +2341,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21, 0.31, -0.15)
 radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
+[node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.19
+omni_range = 3.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
 libraries = {
 "": SubResource("AnimationLibrary_06iis")
@@ -2307,6 +2382,7 @@ material = SubResource("StandardMaterial3D_pmbmt")
 
 [node name="Directional_Light" type="DirectionalLight3D" parent="Scene_Decor"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+light_color = Color(0.617188, 0.617188, 0.617188, 1)
 shadow_enabled = true
 
 [node name="Main_BGM" type="AudioStreamPlayer" parent="."]

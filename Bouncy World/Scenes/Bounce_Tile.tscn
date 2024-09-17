@@ -25,6 +25,8 @@ script = ExtResource("1_4w16f")
 size = Vector3(2, 2, 2)
 material = SubResource("StandardMaterial3D_3dmkm")
 
+[node name="Bounce_Tile_Centre" type="Node3D" parent="."]
+
 [node name="Bounce_Tile_Click_Area" type="Area3D" parent="."]
 collision_mask = 2
 

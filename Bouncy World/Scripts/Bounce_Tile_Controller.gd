@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var centrePoint: Node3D = $Bounce_Tile_Centre
+
 var isPickedUp: bool = false
 var prevMousePosition: Vector2
 var nextMousePosition: Vector2
@@ -33,6 +35,7 @@ func _input(event) -> void:
 		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true and self.isPickedUp == false and self.position.y != startingPosition:
 			position.y = startingPosition
 			targetLocation = startingPosition
+			self.speed = 0
 
 func _ready() -> void:
 	startingPosition = position.y
@@ -65,8 +68,6 @@ func _physics_process(delta) -> void:
 # When a Bounce Tile impacts a sheep, it will apply a force to bounce them upwards in a direction
 func _on_bounce_tile_click_area_body_entered(sheep : RigidBody3D) -> void:
 	if(speed):
-		var distance = sheep.position - position
-		var magnitude = distance.length()
-		var direction = distance / magnitude
-		sheep.apply_central_impulse(Vector3(-direction.x, -direction.y * speed * 100, -direction.z))
+		var direction = (self.centrePoint.position.direction_to(sheep.position)) * self.speed
+		sheep.apply_central_impulse(Vector3(-direction.x, -direction.y  * 1500, direction.z))
 
