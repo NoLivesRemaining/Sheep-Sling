@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dryumo3hkvp00"]
+[gd_scene load_steps=60 format=3 uid="uid://dryumo3hkvp00"]
 
 [ext_resource type="Script" path="res://Scripts/Start_Menu_Manager.gd" id="1_0s1p5"]
 [ext_resource type="PackedScene" uid="uid://2whw3sw81tcb" path="res://Scenes/Start_Menu_BGM.tscn" id="4_3yinb"]
@@ -156,6 +156,13 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 25
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tttc3"]
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_wjigx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j17ll"]
 albedo_color = Color(0.105088, 0.317263, 0, 1)
@@ -1041,6 +1048,77 @@ text = "SFX from Freesound.org
 Music by Ari Castellano"
 label_settings = SubResource("LabelSettings_nfbrr")
 vertical_alignment = 2
+
+[node name="Sheep_Count_Slider" type="HSlider" parent="Menu_Canvas"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = -99.0
+offset_right = -58.0
+offset_bottom = -49.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+min_value = 11.0
+max_value = 35.0
+value = 11.0
+rounded = true
+scrollable = false
+
+[node name="Slider_Text" type="Label" parent="Menu_Canvas/Sheep_Count_Slider"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = 25.0
+offset_right = -10.0
+offset_bottom = 75.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Sheep #"
+label_settings = SubResource("LabelSettings_tttc3")
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Menu_Canvas"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = 96.0
+offset_right = -168.0
+offset_bottom = 121.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_stretch_ratio = 0.0
+theme = SubResource("Theme_wjigx")
+button_pressed = true
+
+[node name="Check_Box_Text" type="Label" parent="Menu_Canvas/CheckBox"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = 12.5
+offset_right = 117.0
+offset_bottom = 62.5
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+text = "Night Mode"
+label_settings = SubResource("LabelSettings_tttc3")
+horizontal_alignment = 1
 
 [node name="Start_Menu_BGM" parent="." instance=ExtResource("4_3yinb")]
 position = Vector2(247, 341)

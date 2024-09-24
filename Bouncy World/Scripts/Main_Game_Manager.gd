@@ -13,20 +13,25 @@ extends Node
 var sheep:  = preload("res://Scenes/Sheep_Prefab.tscn")
 
 var sheepRandomiser: RandomNumberGenerator = RandomNumberGenerator.new()
-var sheepCount: int
-var sheepScore: int = 0
+var sheepCount: float
+var sheepScore: float = 0
 
 var animationArray: Array = ["View_Position_1", "View_Position_2", "View_Position_3", "View_Position_4"]
 var animationNumber: int = 0
 
 func _ready() -> void:
-	sheepCount = sheepRandomiser.randi_range(10, 15)
+	sheepCount = sheepRandomiser.randi_range(10, SettingVariables.sheepTotal)
 	sheepCountUI.text = str(sheepScore) + "/" + str(sheepCount)
 
 func add_Point() -> void:
 	sheepScore += 1
 	sheepCountUI.text = str(sheepScore) + "/" + str(sheepCount)
 	check_Score()
+
+func check_Progress() -> int:
+	var floatPercent = (sheepScore / sheepCount ) * 100
+	var percentageComplete = floatPercent/10 as int
+	return percentageComplete
 
 # Called by Sheep Spawner
 func spawn_Sheep() -> void:

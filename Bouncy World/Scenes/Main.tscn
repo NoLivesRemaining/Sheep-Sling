@@ -1742,7 +1742,6 @@ radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
 [node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 light_cull_mask = 4294967293
 shadow_enabled = true
 shadow_opacity = 0.19
@@ -1817,7 +1816,6 @@ radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
 [node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 light_cull_mask = 4294967293
 shadow_enabled = true
 shadow_opacity = 0.19
@@ -1892,7 +1890,6 @@ radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
 [node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 light_cull_mask = 4294967293
 shadow_enabled = true
 shadow_opacity = 0.19
@@ -2342,7 +2339,6 @@ radius = 0.3
 material = SubResource("StandardMaterial3D_xdue1")
 
 [node name="Light" type="OmniLight3D" parent="Sheep_Pen/Sheep_Display/Sheep_Shape_10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 light_cull_mask = 4294967293
 shadow_enabled = true
 shadow_opacity = 0.19
@@ -2387,7 +2383,6 @@ shadow_enabled = true
 
 [node name="Main_BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_u6b72")
-volume_db = 10.0
 autoplay = true
 
 [connection signal="timeout" from="Game_Manager/Game_Reset_Timer" to="Game_Manager" method="_on_game_reset_timer_timeout"]

@@ -68,6 +68,7 @@ func _physics_process(delta) -> void:
 # When a Bounce Tile impacts a sheep, it will apply a force to bounce them upwards in a direction
 func _on_bounce_tile_click_area_body_entered(sheep : RigidBody3D) -> void:
 	if(speed):
-		var direction = (self.centrePoint.position.direction_to(sheep.position)) * self.speed
-		sheep.apply_central_impulse(Vector3(-direction.x, -direction.y  * 1500, direction.z))
+		var direction = (self.position.direction_to(sheep.position)) * (self.speed * 10)
+		sheep.apply_impulse(Vector3(direction.x, -direction.y * 10, direction.z))
+		sheep.get_child(-1).play()
 
