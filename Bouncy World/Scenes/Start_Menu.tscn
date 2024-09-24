@@ -1,6 +1,8 @@
-[gd_scene load_steps=60 format=3 uid="uid://dryumo3hkvp00"]
+[gd_scene load_steps=62 format=3 uid="uid://dryumo3hkvp00"]
 
 [ext_resource type="Script" path="res://Scripts/Start_Menu_Manager.gd" id="1_0s1p5"]
+[ext_resource type="Material" uid="uid://de4k4i17mfxwv" path="res://Shaders/day_mode.tres" id="2_opmew"]
+[ext_resource type="Material" uid="uid://b2souokc525v8" path="res://Shaders/night_mode.tres" id="3_4a88l"]
 [ext_resource type="PackedScene" uid="uid://2whw3sw81tcb" path="res://Scenes/Start_Menu_BGM.tscn" id="4_3yinb"]
 
 [sub_resource type="Animation" id="Animation_ixjga"]
@@ -583,6 +585,7 @@ reflected_light_source = 2
 
 [node name="Start_Menu" type="Node3D"]
 script = ExtResource("1_0s1p5")
+skyMaterials = Array[ProceduralSkyMaterial]([ExtResource("2_opmew"), ExtResource("3_4a88l")])
 
 [node name="Main_Camera" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 7.13713, 1.9248, 2.35544)
@@ -1100,7 +1103,6 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 size_flags_stretch_ratio = 0.0
 theme = SubResource("Theme_wjigx")
-button_pressed = true
 
 [node name="Check_Box_Text" type="Label" parent="Menu_Canvas/CheckBox"]
 layout_mode = 1
@@ -2036,9 +2038,20 @@ material = SubResource("StandardMaterial3D_ovyow")
 [node name="Sky_Box" type="WorldEnvironment" parent="Scene_Dressing"]
 environment = SubResource("Environment_o6u0u")
 
-[node name="Start_Menu_Directional_Light" type="DirectionalLight3D" parent="Scene_Dressing"]
-transform = Transform3D(0.803466, 0.137615, -0.579228, 0.579228, -0.40558, 0.707107, -0.137615, -0.903641, -0.40558, 0, 20, 0)
+[node name="Night_Mode" type="Node3D" parent="Scene_Dressing"]
+visible = false
+
+[node name="Directional_Light" type="DirectionalLight3D" parent="Scene_Dressing/Night_Mode"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+light_color = Color(0.617188, 0.617188, 0.617188, 1)
+shadow_enabled = true
+
+[node name="Day_Mode" type="Node3D" parent="Scene_Dressing"]
+
+[node name="Directional_Light" type="DirectionalLight3D" parent="Scene_Dressing/Day_Mode"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 shadow_enabled = true
 
 [connection signal="pressed" from="Menu_Canvas/Play_Button" to="." method="_on_play_button_pressed"]
 [connection signal="timeout" from="Menu_Canvas/Play_Button/Play_Button_Timer" to="." method="_on_play_button_timer_timeout"]
+[connection signal="toggled" from="Menu_Canvas/CheckBox" to="." method="_on_check_box_toggled"]

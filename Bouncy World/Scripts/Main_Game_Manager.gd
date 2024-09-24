@@ -3,12 +3,18 @@ extends Node
 @onready var resetTimer: Timer = $Game_Reset_Timer
 @onready var cameraAnimator: AnimationPlayer = $"../Main_Camera/Main_Camera_Animation_Player"
 @onready var sheepCountUI: Label = $Main_UI/Sheep_Count_Text
+@onready var returnButton: Button = $Main_UI/Return_Button
 @onready var spawnPoint: Marker3D = $Sheep_Spawner
 @onready var textAnimator: AnimationPlayer = $Main_UI/Win_Text/Win_Text_Animation_Player
 @onready var sheepViewPort: SubViewportContainer = $Main_UI/Sheep_Count_Sheep_Viewport
 @onready var winSFX: AudioStreamPlayer3D = $Win_SFX
 @onready var fadeOutAnimator: AnimationPlayer = $Main_UI/Fade_In_Out_Curtain/Fade_In_Out_Animation_Player
 @onready var fadeOutTimer: Timer = $Main_UI/Fade_In_Out_Curtain/Fade_Out_Timer
+@onready var skyBox: WorldEnvironment = $"../Scene_Decor/Sky_Box"
+@onready var nightLight : Node3D = $"../Scene_Decor/Night_Mode"
+@onready var dayLight : Node3D = $"../Scene_Decor/Day_Mode"
+
+@export var skyMaterials: Array[ProceduralSkyMaterial]
 
 var sheep:  = preload("res://Scenes/Sheep_Prefab.tscn")
 
@@ -22,6 +28,12 @@ var animationNumber: int = 0
 func _ready() -> void:
 	sheepCount = sheepRandomiser.randi_range(10, SettingVariables.sheepTotal)
 	sheepCountUI.text = str(sheepScore) + "/" + str(sheepCount)
+	nightLight.set_visible(SettingVariables.nightMode)
+	dayLight.set_visible(!SettingVariables.nightMode)
+	if (SettingVariables.nightMode):
+		skyBox.environment.sky.set_material(skyMaterials[1])
+	else:
+		skyBox.environment.sky.set_material(skyMaterials[0])
 
 func add_Point() -> void:
 	sheepScore += 1
@@ -53,6 +65,7 @@ func check_Score() -> void:
 	if(sheepScore == sheepCount):
 		check_Animation()
 		textAnimator.play("TextFadeIn")
+		returnButton.set_visible(true)
 		sheepViewPort.set_visible(false)
 		sheepCountUI.set_visible(false)
 		winSFX.play()
@@ -78,3 +91,5 @@ func _on_game_reset_timer_timeout() -> void:
 	get_tree().reload_current_scene()
 
 
+func _on_return_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Start_Menu.tscn")

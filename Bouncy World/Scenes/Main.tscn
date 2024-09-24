@@ -1,11 +1,14 @@
-[gd_scene load_steps=75 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=76 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Game_Manager.gd" id="1_rvem5"]
 [ext_resource type="PackedScene" uid="uid://crjlq0i2c8mc5" path="res://Scenes/Sheep_Spawn_Point.tscn" id="2_ld0uj"]
 [ext_resource type="AudioStream" uid="uid://d1p6l7cs78w6h" path="res://Sound/Win_SFX.wav" id="3_l4mvi"]
 [ext_resource type="PackedScene" uid="uid://dtu0r5vfh2cgj" path="res://Scenes/Bounce_Tile.tscn" id="4_j5icq"]
 [ext_resource type="PackedScene" uid="uid://ditao2fywc1c0" path="res://Scenes/Sheep_Pen.tscn" id="5_6lqi3"]
+[ext_resource type="Material" uid="uid://de4k4i17mfxwv" path="res://Shaders/day_mode.tres" id="6_e3pes"]
+[ext_resource type="Environment" uid="uid://gbap0rv23jwg" path="res://Shaders/night_enviornment.tres" id="6_qeiiq"]
 [ext_resource type="AudioStream" uid="uid://cvd1tpwtt07qd" path="res://Sound/Main_Music.wav" id="6_u6b72"]
+[ext_resource type="Material" uid="uid://b2souokc525v8" path="res://Shaders/night_mode.tres" id="6_uysjp"]
 
 [sub_resource type="Animation" id="Animation_ccfw5"]
 length = 0.001
@@ -441,6 +444,11 @@ _data = {
 "fadeIn": SubResource("Animation_tp1xo"),
 "fadeOut": SubResource("Animation_arva5")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_brta3"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_npdvm"]
 friction = 0.1
@@ -886,22 +894,6 @@ _data = {
 "sheep_bounce": SubResource("Animation_qhg8a")
 }
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fcfx2"]
-sky_top_color = Color(0.0822449, 0.0823026, 0.0859375, 1)
-sky_horizon_color = Color(0.0134972, 0.0125885, 0.128906, 1)
-ground_bottom_color = Color(0.0585938, 0.0585938, 0.0585938, 1)
-ground_horizon_color = Color(0.0390625, 0.0390625, 0.0390625, 1)
-sun_angle_max = 0.0
-
-[sub_resource type="Sky" id="Sky_tdx17"]
-sky_material = SubResource("ProceduralSkyMaterial_fcfx2")
-
-[sub_resource type="Environment" id="Environment_tpmtl"]
-background_mode = 2
-sky = SubResource("Sky_tdx17")
-ambient_light_color = Color(1, 1, 1, 1)
-reflected_light_source = 2
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmbmt"]
 albedo_color = Color(0.105088, 0.317263, 0, 1)
 
@@ -923,6 +915,7 @@ libraries = {
 [node name="Game_Manager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_rvem5")
+skyMaterials = Array[ProceduralSkyMaterial]([ExtResource("6_e3pes"), ExtResource("6_uysjp")])
 
 [node name="Sheep_Spawner" parent="Game_Manager" instance=ExtResource("2_ld0uj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
@@ -1124,6 +1117,39 @@ autoplay = "fadeOut"
 [node name="Fade_Out_Timer" type="Timer" parent="Game_Manager/Main_UI/Fade_In_Out_Curtain"]
 wait_time = 10.0
 one_shot = true
+
+[node name="Return_Button" type="Button" parent="Game_Manager/Main_UI"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -256.0
+offset_right = 150.0
+offset_bottom = -131.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Return_Button_Text" type="Label" parent="Game_Manager/Main_UI/Return_Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = -34.5
+offset_right = 80.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+label_settings = SubResource("LabelSettings_brta3")
+horizontal_alignment = 1
 
 [node name="Bounce_Tiles" type="Node" parent="."]
 
@@ -2351,9 +2377,6 @@ libraries = {
 
 [node name="Scene_Decor" type="Node" parent="."]
 
-[node name="Sky_Box" type="WorldEnvironment" parent="Scene_Decor"]
-environment = SubResource("Environment_tpmtl")
-
 [node name="Ground" type="Node3D" parent="Scene_Decor"]
 
 [node name="Ground_Texture_1" type="CSGBox3D" parent="Scene_Decor/Ground"]
@@ -2376,9 +2399,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066, -161)
 size = Vector3(22, 1, 300)
 material = SubResource("StandardMaterial3D_pmbmt")
 
-[node name="Directional_Light" type="DirectionalLight3D" parent="Scene_Decor"]
+[node name="Sky_Box" type="WorldEnvironment" parent="Scene_Decor"]
+environment = ExtResource("6_qeiiq")
+
+[node name="Night_Mode" type="Node3D" parent="Scene_Decor"]
+
+[node name="Directional_Light" type="DirectionalLight3D" parent="Scene_Decor/Night_Mode"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 light_color = Color(0.617188, 0.617188, 0.617188, 1)
+shadow_enabled = true
+
+[node name="Day_Mode" type="Node3D" parent="Scene_Decor"]
+visible = false
+
+[node name="Directional_Light" type="DirectionalLight3D" parent="Scene_Decor/Day_Mode"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 shadow_enabled = true
 
 [node name="Main_BGM" type="AudioStreamPlayer" parent="."]
@@ -2387,3 +2422,4 @@ autoplay = true
 
 [connection signal="timeout" from="Game_Manager/Game_Reset_Timer" to="Game_Manager" method="_on_game_reset_timer_timeout"]
 [connection signal="timeout" from="Game_Manager/Main_UI/Fade_In_Out_Curtain/Fade_Out_Timer" to="Game_Manager" method="_on_fade_out_timer_timeout"]
+[connection signal="pressed" from="Game_Manager/Main_UI/Return_Button" to="Game_Manager" method="_on_return_button_pressed"]

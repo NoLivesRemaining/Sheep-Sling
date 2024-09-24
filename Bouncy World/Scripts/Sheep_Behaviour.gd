@@ -2,6 +2,7 @@ extends RigidBody3D
 
 @onready var bahSFX: AudioStreamPlayer3D = $Sheep_Bah_SFX
 @onready var bonkSFX: AudioStreamPlayer3D = $Wall_Bonk_SFX
+@onready var light: OmniLight3D = $Light
 
 var startingRotation: Vector3
 var currentRotation: float
@@ -10,6 +11,7 @@ const minimumVelocity: float = 0.025
 
 func _ready() -> void:
 	startingRotation = rotation
+	light.set_visible(SettingVariables.nightMode)
 
 func _process(delta : float) -> void:
 	if(self.rotation != startingRotation and linear_velocity.length() < minimumVelocity):

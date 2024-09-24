@@ -1,5 +1,5 @@
 extends Node
 
-var sheepTotal : int 
-var nightMode : bool
+var sheepTotal : int = 11
+var nightMode : bool = false
 
