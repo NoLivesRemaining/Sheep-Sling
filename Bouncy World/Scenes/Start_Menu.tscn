@@ -620,9 +620,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -424.0
-offset_top = -201.0
+offset_top = -154.0
 offset_right = 1176.0
-offset_bottom = 1299.0
+offset_bottom = 1346.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
@@ -829,9 +829,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -427.0
-offset_top = -20.0
+offset_top = 27.0
 offset_right = 1073.0
-offset_bottom = 1480.0
+offset_bottom = 1527.0
 grow_horizontal = 2
 scale = Vector2(0.2, 0.2)
 
@@ -912,9 +912,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 164.0
-offset_top = -107.0
+offset_top = -60.0
 offset_right = 1664.0
-offset_bottom = 1393.0
+offset_bottom = 1440.0
 grow_horizontal = 2
 scale = Vector2(0.2, 0.2)
 
@@ -995,9 +995,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -276.0
-offset_top = 45.0
+offset_top = 92.0
 offset_right = 276.0
-offset_bottom = 182.0
+offset_bottom = 229.0
 grow_horizontal = 2
 text = "Sheep Sling"
 label_settings = SubResource("LabelSettings_uyspo")
@@ -1088,7 +1088,7 @@ text = "Sheep #"
 label_settings = SubResource("LabelSettings_tttc3")
 horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="Menu_Canvas"]
+[node name="Night_Mode_Checkbox" type="CheckBox" parent="Menu_Canvas"]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -1104,7 +1104,7 @@ scale = Vector2(2, 2)
 size_flags_stretch_ratio = 0.0
 theme = SubResource("Theme_wjigx")
 
-[node name="Check_Box_Text" type="Label" parent="Menu_Canvas/CheckBox"]
+[node name="Check_Box_Text" type="Label" parent="Menu_Canvas/Night_Mode_Checkbox"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -2054,4 +2054,4 @@ shadow_enabled = true
 
 [connection signal="pressed" from="Menu_Canvas/Play_Button" to="." method="_on_play_button_pressed"]
 [connection signal="timeout" from="Menu_Canvas/Play_Button/Play_Button_Timer" to="." method="_on_play_button_timer_timeout"]
-[connection signal="toggled" from="Menu_Canvas/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="Menu_Canvas/Night_Mode_Checkbox" to="." method="_on_night_mode_checkbox_toggled"]

@@ -21,7 +21,7 @@ func _on_play_button_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Introduction.tscn")
 
 
-func _on_check_box_toggled(toggled_on: bool) -> void:
+func _on_night_mode_checkbox_toggled(toggled_on: bool) -> void:
 	SettingVariables.nightMode = toggled_on
 	if (toggled_on):
 		skyBox.environment.sky.set_material(skyMaterials[1])
