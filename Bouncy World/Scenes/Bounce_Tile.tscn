@@ -15,7 +15,7 @@ shader_parameter/wire_smoothness = 0.02
 next_pass = SubResource("ShaderMaterial_cg4qp")
 albedo_color = Color(0.126657, 0.364294, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y0dmb"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_5uhpv"]
 size = Vector3(2, 2, 2)
 
 [node name="Bounce_Tile" type="Node3D"]
@@ -31,8 +31,7 @@ material = SubResource("StandardMaterial3D_3dmkm")
 collision_mask = 2
 
 [node name="Bounce_Tile_Collider_Shape" type="CollisionShape3D" parent="Bounce_Tile_Click_Area"]
-shape = SubResource("BoxShape3D_y0dmb")
+shape = SubResource("BoxShape3D_5uhpv")
 
 [connection signal="body_entered" from="Bounce_Tile_Click_Area" to="." method="_on_bounce_tile_click_area_body_entered"]
 [connection signal="input_event" from="Bounce_Tile_Click_Area" to="." method="_on_bounce_tile_click_area_input_event"]
-[connection signal="input_event" from="Bounce_Tile_Click_Area" to="." method="_on_area_3d_input_event"]

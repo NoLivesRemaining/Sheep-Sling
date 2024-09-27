@@ -15,7 +15,7 @@ func _on_collection_hitbox_body_entered(body: RigidBody3D) -> void:
 	gameManager.add_Point()
 	collectionPlayer.play()
 	sheepTracker = gameManager.check_Progress()
-	if(sheepTracker <= 10):
+	if(sheepTracker < 10):
 		sheepSpawnArray[sheepTracker].set_visible(true)
 		sheepSpawnArray[sheepTracker].get_child(-1).play("sheep_bounce")
 	body.queue_free()
