@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dryumo3hkvp00"]
+[gd_scene load_steps=65 format=3 uid="uid://dryumo3hkvp00"]
 
 [ext_resource type="Script" path="res://Scripts/Start_Menu_Manager.gd" id="1_0s1p5"]
 [ext_resource type="Material" uid="uid://de4k4i17mfxwv" path="res://Shaders/day_mode.tres" id="2_opmew"]
@@ -124,6 +124,11 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgi5n"]
 albedo_color = Color(0.587027, 0.418059, 0.268655, 0.996078)
 
+[sub_resource type="Environment" id="Environment_qaexw"]
+background_mode = 1
+background_color = Color(0.625597, 0.625597, 0.625597, 1)
+background_energy_multiplier = 1.2
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxaql"]
 albedo_color = Color(0, 0.0709874, 0.0711856, 1)
 
@@ -139,6 +144,16 @@ height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vg3ut"]
 albedo_color = Color(0.960351, 0.960351, 0.960351, 1)
+
+[sub_resource type="Environment" id="Environment_muf8f"]
+background_mode = 1
+background_color = Color(0.627451, 0.627451, 0.627451, 1)
+background_energy_multiplier = 1.5
+
+[sub_resource type="Environment" id="Environment_7dg44"]
+background_mode = 1
+background_color = Color(0.627451, 0.627451, 0.627451, 1)
+background_energy_multiplier = 1.5
 
 [sub_resource type="LabelSettings" id="LabelSettings_uyspo"]
 line_spacing = 5.0
@@ -823,6 +838,7 @@ material = SubResource("StandardMaterial3D_dgi5n")
 
 [node name="Fence_Camera" type="Camera3D" parent="Menu_Canvas/Viewports/Fence_Viewport/Fence_SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 12.3871, -16.3976, 5.12465)
+environment = SubResource("Environment_qaexw")
 
 [node name="Sheep_1_Viewport" type="SubViewportContainer" parent="Menu_Canvas/Viewports"]
 anchors_preset = 5
@@ -839,6 +855,7 @@ scale = Vector2(0.2, 0.2)
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1500, 1500)
+render_target_clear_mode = 1
 render_target_update_mode = 4
 
 [node name="Viewport_1_Sheep" type="Node3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport"]
@@ -906,6 +923,7 @@ material = SubResource("StandardMaterial3D_vg3ut")
 
 [node name="Sheep_1_Camera" type="Camera3D" parent="Menu_Canvas/Viewports/Sheep_1_Viewport/Sheep_1_SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, -10.6382, -14.1425, 1.9588)
+environment = SubResource("Environment_muf8f")
 
 [node name="Sheep_2_Viewport" type="SubViewportContainer" parent="Menu_Canvas/Viewports"]
 anchors_preset = 5
@@ -922,6 +940,7 @@ scale = Vector2(0.2, 0.2)
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1500, 1500)
+render_target_clear_mode = 1
 render_target_update_mode = 4
 
 [node name="Viewport_2_Sheep" type="Node3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport"]
@@ -989,6 +1008,7 @@ material = SubResource("StandardMaterial3D_vg3ut")
 
 [node name="Sheep_2_Camera" type="Camera3D" parent="Menu_Canvas/Viewports/Sheep_2_Viewport/Sheep_2_SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, 0, -14.1425, 2.6138)
+environment = SubResource("Environment_7dg44")
 
 [node name="Game_Name_Text" type="Label" parent="Menu_Canvas"]
 anchors_preset = 5

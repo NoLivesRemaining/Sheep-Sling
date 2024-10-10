@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bo3ye33dg27kd"]
+[gd_scene load_steps=77 format=3 uid="uid://bo3ye33dg27kd"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Game_Manager.gd" id="1_rvem5"]
 [ext_resource type="PackedScene" uid="uid://crjlq0i2c8mc5" path="res://Scenes/Sheep_Spawn_Point.tscn" id="2_ld0uj"]
@@ -363,6 +363,12 @@ height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wifm6"]
 albedo_color = Color(0.960351, 0.960351, 0.960351, 1)
+
+[sub_resource type="Environment" id="Environment_lsuwc"]
+background_mode = 1
+background_color = Color(0.627451, 0.627451, 0.627451, 1)
+background_energy_multiplier = 1.5
+ambient_light_source = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6w2c"]
 albedo_color = Color(0.587027, 0.418059, 0.268655, 0.996078)
@@ -1067,6 +1073,7 @@ material = SubResource("StandardMaterial3D_wifm6")
 
 [node name="Sheep_Viewport_Camera" type="Camera3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.746232, 0.665686, 0, -0.665686, 0.746232, 721.353, -6.94637, 66.3063)
+environment = SubResource("Environment_lsuwc")
 
 [node name="Sheep_Viewport_Fencing" type="Node3D" parent="Game_Manager/Main_UI/Sheep_Count_Sheep_Viewport/Sheep_Count_SubViewport"]
 transform = Transform3D(0.8, 0, 0, 0, 0.597311, 0.532184, 0, -0.532184, 0.597311, 721.189, -9.61465, 63.6891)
